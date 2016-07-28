@@ -1,6 +1,81 @@
-head
-    title Under construction
-body(style='background-color: #000000')
-    div(style='margin:auto;position:absolute;top:50%;display:block;font-family:helvetica;font-size:50px;font-weight:100;color:#fff;')='Under Construction'
+extends ./extends/default
 
 
+block append navbarinclude
+    include ./navbars/navbar_index
+
+block append content
+    section#features.section
+        .container
+            .section-header
+                h1.section-title.wow.fadeInRight(data-wow-duration='1000ms', data-wow-delay='100ms') Features
+                h2.section-subtitle.wow.fadeInRight(data-wow-duration='1000ms', data-wow-delay='400ms') Who seeks after it and wants to have it
+            .row
+                .col-md-4.col-sm-6.wow.fadeInDown(data-wow-duration='1000ms', data-wow-delay='300ms')
+                    .features
+                        .icon
+                            i.mdi-action-settings
+                        .features-text
+                            h4 Powerful Configuration
+                            p
+                                | FoxBot contains a powerful configuration system. You can enable/disable single subcommands or even the whole command.
+                .col-md-4.col-sm-6.wow.fadeInDown(data-wow-duration='1000ms', data-wow-delay='450ms')
+                    .features
+                        .icon
+                            i.mdi-alert-error
+                        .features-text
+                            h4 Moderation
+                            p
+                                | Foxbot has an advanced spam detection system which can detect various forms of spam.
+                .col-md-4.col-sm-6.wow.fadeInDown(data-wow-duration='1000ms', data-wow-delay='500ms')
+                    .features
+                        .icon
+                            i.mdi-action-favorite
+                        .features-text
+                            h4 Crafted with Love
+                            p
+                                | FoxBot is written with strict quality test to ensure it doesn't crash or produces errors. Since Foxbot only depends on own services
+                                | except Discord it's very unlikely to have any outages.
+                .col-md-4.col-sm-6.wow.fadeInDown(data-wow-duration='1000ms', data-wow-delay='550ms')
+                    .features
+                        .icon
+                            i.mdi-social-person-outline
+                        .features-text
+                            h4 Analytics
+                            p
+                                | FoxBot will collect some statistics over your server and will keep active server always cached to ensure quick command execution.
+    section#stats.section
+        .container
+            .row
+                .col-md-3.col-sm-6.col-xs-12.wow.fadeInLeft(data-wow-duration='1000ms', data-wow-delay='300ms')
+                    .counter-item
+                        .icon
+                            i.mdi-action-get-app
+                        h3.timer= stats.guilds
+                        hr
+                        h5
+                            | Guilds
+                .col-md-3.col-sm-6.col-xs-12.wow.fadeInLeft(data-wow-duration='1000ms', data-wow-delay='500ms')
+                    .counter-item
+                        .icon
+                            i.mdi-action-face-unlock
+                        h3.timer= stats.users
+                        hr
+                        h5
+                            | Users
+                .col-md-3.col-sm-6.col-xs-12.wow.fadeInRight(data-wow-duration='1000ms', data-wow-delay='700ms')
+                    .counter-item
+                        .icon
+                            i.mdi-action-grade
+                        h3.timer= stats.channels
+                        hr
+                        h5
+                            | Channels
+                .col-md-3.col-sm-6.col-xs-12.wow.fadeInRight(data-wow-duration='1000ms', data-wow-delay='900ms')
+                    .counter-item
+                        .icon
+                            i.mdi-action-trending-up
+                        h3.timer=stats.mpm
+                        hr
+                        h5
+                            | Messages per Minute

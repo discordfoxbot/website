@@ -11,26 +11,51 @@ var S = require('string');
 var story = storyboard.mainStory;
 storyboard.addListener(require('storyboard/lib/listeners/console').default);
 
+var stats = require('./data/stats');
+
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-app.use(logger('short',{
+app.use(logger('short', {
     stream: {
         write: (toLog) => {
-            story.info('http',S(toLog).chompRight('\n').s)
+            story.info('http', S(toLog).chompRight('\n').s)
         }
     }
 }));
+
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
-//app.use('/characters', require('./routes/characters'));
+app.use('/characters', require('./routes/characters'));
+app.use('/commands', require('./routes/commands'));
+app.use('/chatlogs',require('./routes/chatlogs'));
 
-app.get('/', (req,res)=>{res.redirect('https://discordapp.com/oauth2/authorize?access_type=online&client_id=168751105558183936&scope=bot&permissions=473031686')});
-app.get('/*', (req, res)=>{res.render('index')});
+app.get('/', (req, res)=> {
+    res.render('index', {
+        pagetitle: 'FoxBot',
+        header: {
+            title: 'Foxbot',
+            subtitle: 'A fully featured DiscordBot',
+            button: {
+                primary: {link: '/invite', text: 'Add to Guild'},
+                secondary: [{link: '/commands', text: 'Commands'}]
+            }
+        },
+        stats: stats()
+    });
+});
+
+app.get('/template', (req, res)=> {
+    res.render('template')
+});
+
+app.get('/invite', (req, res)=> {
+    res.redirect('https://discordapp.com/oauth2/authorize?access_type=online&client_id=168751105558183936&scope=bot&permissions=473031686')
+});
 
 app.use(function (req, res) {
     res.redirect('/');

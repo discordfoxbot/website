@@ -1,0 +1,27 @@
+extends ../extends/default
+
+block append content
+
+
+
+    section#main-features.section.main-feature-gray
+        .container
+            .row
+                .col-md-8.col-sm-8.wow.fadeInLeft(data-wow-duration='1000ms', data-wow-delay='300ms')
+                    .feature-item
+                        h3.title-small= command.usage
+                        p= command.description
+    if subcommands && subcommands.length>0
+        section#subcommands.section
+            .container
+                .section-header
+                    h1.section-title.wow.fadeInRight(data-wow-duration='1000ms', data-wow-delay='100ms')='Subcommands'
+                .row
+                    each element,index in subcommands
+                        .col-md-4.col-sm-6.wow.fadeInDown(data-wow-duration='1000ms', data-wow-delay=300 + index * 50 + 'ms')
+                            .features
+                                .icon
+                                    i.mdi-action-settings
+                                .features-text
+                                    h4
+                                        a(href='/commands/' + element.name)=element.name

@@ -1,0 +1,16 @@
+html
+    head
+        include ../includes/head
+
+    body
+        block navbarinclude
+        .content-wrap
+            include ../includes/header
+            block content
+            section#copyright
+                .container
+                    .row
+                        .col-md-12
+                            p.copyright-text.
+                                © Pluto 2015 All right reserved. Designed and Developed by #[a(href='http://graygrids.com/') GrayGrids]
+        include ../includes/scripts
