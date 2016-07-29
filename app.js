@@ -32,7 +32,7 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.use('/characters', require('./routes/characters'));
 app.use('/commands', require('./routes/commands'));
-app.use('/chatlogs',require('./routes/chatlogs'));
+app.use('/chatlogs', require('./routes/chatlogs'));
 
 app.get('/', (req, res)=> {
     res.render('index', {
@@ -57,8 +57,8 @@ app.get('/invite', (req, res)=> {
     res.redirect('https://discordapp.com/oauth2/authorize?access_type=online&client_id=168751105558183936&scope=bot&permissions=473031686')
 });
 
-app.use(function (req, res) {
-    res.redirect('/');
+app.use(function (err, req, res, next) {
+    res.status(err).send(err + ' - An error ocured. Sorry..');
 });
 
 app.listen(4236);

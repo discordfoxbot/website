@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
+    "bluebird": "^3.4.1",
     "body-parser": "~1.15.1",
     "cookie-parser": "~1.4.3",
     "cron": "^1.1.0",

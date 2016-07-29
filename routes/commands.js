@@ -39,19 +39,21 @@ app.get('/', (req, res)=> {
     });
 });
 
-app.get('/:command', (req, res)=> {
-    res.render('commands/command', {
-        pagetitle: req.params.command,
-        header: {
-            title: 'Foxbot',
-            subtitle: 'A fully featured DiscordBot',
-            button: {
-                primary: {link: '/invite', text: 'Add to Guild'},
-                secondary: [{link: '/commands', text: 'Commands'}]
-            }
-        }, command: commands[req.params.command],
-        subcommands: commands[req.params.command].sublist
-    });
+app.get('/:command', (req, res, next)=> {
+    if (commands[req.params.command] !== undefined) {
+        res.render('commands/command', {
+            pagetitle: req.params.command,
+            header: {
+                title: 'Foxbot',
+                subtitle: 'A fully featured DiscordBot',
+                button: {
+                    primary: {link: '/invite', text: 'Add to Guild'},
+                    secondary: [{link: '/commands', text: 'Commands'}]
+                }
+            }, command: commands[req.params.command],
+            subcommands: commands[req.params.command].sublist
+        });
+    } else next(404);
 });
 
 app.get('/:command/:subcommand', (req, res)=> {
