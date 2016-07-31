@@ -4,7 +4,7 @@ var Promise = require('bluebird');
 var db = require('../db');
 
 app.get('/', (req, res)=> {
-    res.render('chatlog/index', {title: 'ChatLogs'});
+    res.render('chatlog/index', {pagetitle: 'ChatLogs', header: {button: [{link: '/', text: 'Home'}]}});
 });
 
 app.get('/:id', (req, res, next)=> {

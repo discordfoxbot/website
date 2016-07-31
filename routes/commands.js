@@ -32,7 +32,8 @@ var list = function () {
 
 app.get('/', (req, res)=> {
     res.render('commands/index', {
-        pagetitle: 'FoxBot commands', header: {
+        pagetitle: 'FoxBot commands',
+        header: {
             title: 'Foxbot',
             subtitle: 'A fully featured DiscordBot',
             button: [{link: '/', text: 'Home'}]
