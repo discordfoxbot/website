@@ -124,7 +124,7 @@ module.exports = {
                 addpicture: {
                     usage: '&{command} (id) [picture link]',
                     alias: null,
-                    description: 'Adds a picture to your waifu (or the waifu specified in the id). Pictures will be uploaded to gg.fuechschen.org and be queued for verification through one of FoxBot\'s managers.',
+                    description: 'Adds a picture to your waifu (or the waifu specified in the id). Pictures will be uploaded to gg.fuechschen.space and be queued for verification through one of FoxBot\'s managers.',
                     perm: 0
                 }
             }
@@ -162,7 +162,7 @@ module.exports = {
                 addpicture: {
                     usage: '&{command} (id) [picture link]',
                     alias: null,
-                    description: 'Adds a picture to your husbando (or the husbando specified in the id). Pictures will be uploaded to gg.fuechschen.org and be queued for verification through one of FoxBot\'s managers.',
+                    description: 'Adds a picture to your husbando (or the husbando specified in the id). Pictures will be uploaded to gg.fuechschen.space and be queued for verification through one of FoxBot\'s managers.',
                     perm: 0
                 }
             }
