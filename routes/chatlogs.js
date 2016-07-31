@@ -3,8 +3,8 @@ var Promise = require('bluebird');
 
 var db = require('../db');
 
-app.get('/',(req,res)=>{
-    res.render('chatlog/index',{title:'ChatLogs'});
+app.get('/', (req, res)=> {
+    res.render('chatlog/index', {title: 'ChatLogs'});
 });
 
 app.get('/:id', (req, res, next)=> {
@@ -12,7 +12,14 @@ app.get('/:id', (req, res, next)=> {
         if (log !== null && log !== undefined) {
             log.getChatLogMessages({order: [['timestamp', 'ASC']]}).then(msgs=> {
                 Promise.join(log.getChannel(), log.getUser(), log.getGuild(), (channel, user, guild)=> {
-                    res.render('chatlog/log', {msgs, user, channel, guild, log});
+                    res.render('chatlog/log', {
+                        msgs,
+                        user,
+                        channel,
+                        guild,
+                        log,
+                        header: {button: [{link: '/', text: 'Home'}]}
+                    });
                 });
             });
         } else next(404);
