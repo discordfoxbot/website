@@ -9,19 +9,20 @@ var list = function () {
     keys.forEach((key)=> {
         commands[key].name = key;
         commands[key].usage = utils.replace(commands[key].usage, {command: commands[key].name});
-        if (commands[key].subcommands) {
+        list.push(commands[key].name);
+        if (commands[key].subcommands !== undefined) {
             commands[key].sublist = function () {
-                var list = [];
+                var sublist = [];
                 var keys = Object.keys(commands[key].subcommands);
                 keys.forEach((subkey)=> {
                     commands[key].subcommands[subkey].name = subkey;
                     commands[key].subcommands[subkey].usage = utils.replace(commands[key].subcommands[subkey].usage, {command: key + ' ' + subkey});
-                    list.push(commands[key].subcommands[subkey]);
+                    sublist.push(commands[key].subcommands[subkey].name);
+                    list.push(commands[key].name + ' ' + commands[key].subcommands[subkey].name)
                 });
                 return list;
-            }
+            }()
         }
-        list.push(commands[key]);
     });
     return list;
 }();
@@ -31,10 +32,7 @@ app.get('/', (req, res)=> {
         pagetitle: 'FoxBot commands', header: {
             title: 'Foxbot',
             subtitle: 'A fully featured DiscordBot',
-            button: {
-                primary: {link: '/invite', text: 'Add to Guild'},
-                secondary: [{link: '/commands', text: 'Commands'}]
-            }
+            button:  [{link: '/commands', text: 'Commands'}]
         }, commands: list
     });
 });
@@ -44,20 +42,26 @@ app.get('/:command', (req, res, next)=> {
         res.render('commands/command', {
             pagetitle: req.params.command,
             header: {
-                title: 'Foxbot',
-                subtitle: 'A fully featured DiscordBot',
-                button: {
-                    primary: {link: '/invite', text: 'Add to Guild'},
-                    secondary: [{link: '/commands', text: 'Commands'}]
-                }
-            }, command: commands[req.params.command],
+                button: [{link: '/commands', text: 'Commands'}]
+            },
+            command: commands[req.params.command],
             subcommands: commands[req.params.command].sublist
         });
     } else next(404);
 });
 
-app.get('/:command/:subcommand', (req, res)=> {
-
+app.get('/:command/:subcommand', (req, res, next)=> {
+    if (commands[req.params.command].subcommands[req.params.subcommand] !== undefined) {
+        res.render('commands/command', {
+            pagetitle: req.params.command,
+            header: {
+                title: 'Foxbot',
+                subtitle: 'A fully featured DiscordBot',
+                button:  [{link: '/commands', text: 'Commands'}]
+            },
+            command: commands[req.params.command].subcommands[req.params.subcommand]
+        });
+    } else next(404);
 });
 
 module.exports = app;

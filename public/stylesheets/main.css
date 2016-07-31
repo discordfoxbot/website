@@ -221,7 +221,7 @@ a:focus {
   background-position: center bottom;
   color: #fff;
   overflow: hidden;
-  padding: 90px 0;
+  padding: 60px 0;
 }
 .hero-area .sticky-navigation {
   background: transparent;
@@ -260,7 +260,7 @@ a:focus {
 }
 @media (min-width: 1200px) {
   .hero-area {
-    padding: 280px 0;
+    padding: 120px 0;
   }
   .hero-area h1 {
     font-size: 50px !important;

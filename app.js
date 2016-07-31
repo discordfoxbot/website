@@ -40,10 +40,7 @@ app.get('/', (req, res)=> {
         header: {
             title: 'Foxbot',
             subtitle: 'A fully featured DiscordBot',
-            button: {
-                primary: {link: '/invite', text: 'Add to Guild'},
-                secondary: [{link: '/commands', text: 'Commands'}]
-            }
+            button: [{link: '/commands', text: 'Commands'}]
         },
         stats: stats()
     });
@@ -54,11 +51,13 @@ app.get('/template', (req, res)=> {
 });
 
 app.get('/invite', (req, res)=> {
-    res.redirect('https://discordapp.com/oauth2/authorize?access_type=online&client_id=168751105558183936&scope=bot&permissions=473031686')
+    res.redirect('https://discordapp.com/oauth2/authorize?access_type=online&client_id=168751105558183936&scope=bot&permissions=473031686&redirect_uri=https://foxbot.fuechschen.org/oauth/callback')
 });
 
 app.use(function (err, req, res, next) {
-    res.status(err).send(err + ' - An error ocured. Sorry..');
+    if (typeof err === 'number')res.status(err).send(err + ' - An error ocured. Sorry..');
+    else res.status(500).send('An unknown error occured. We\'re working on it!');
+    story.error('http', 'Http reported an error.', {attach: err});
 });
 
 app.listen(4236);

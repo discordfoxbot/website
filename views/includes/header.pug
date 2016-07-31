@@ -3,10 +3,10 @@ block page-header
         .container
             include ./navbarheader
             .contents.text-right
-                h1.wow.fadeInRight(data-wow-duration='1000ms', data-wow-delay='300ms')= header.title
-                p.wow.fadeInRight(data-wow-duration='1000ms', data-wow-delay='400ms')= header.subtitle
-                if header.button.primary!==undefined
-                    a.btn.btn-lg.btn-primary.wow.fadeInUp(href=header.button.primary.link, data-wow-duration='1000ms', data-wow-delay='400ms')= header.button.primary.text
-                if header.button.secondary
-                    each val in header.button.secondary
-                        a.btn.btn-lg.btn-border.wow.fadeInUp(href=val.link, data-wow-duration='1000ms', data-wow-delay='500ms')= val.text
+                h1.wow.fadeInRight(data-wow-duration='1000ms', data-wow-delay='300ms')= 'FoxBot'
+                p.wow.fadeInRight(data-wow-duration='1000ms', data-wow-delay='400ms')= 'A fully featured DiscordBot'
+                a.btn.btn-lg.btn-primary.wow.fadeInUp(href='/invite', data-wow-duration='1000ms', data-wow-delay='400ms')= 'Add to Guild'
+                if header!==undefined
+                    if header.button
+                        each val in header.button
+                            a.btn.btn-lg.btn-border.wow.fadeInUp(href=val.link, data-wow-duration='1000ms', data-wow-delay='500ms')= val.text

@@ -3,6 +3,10 @@ var Promise = require('bluebird');
 
 var db = require('../db/sql_db');
 
+app.get('/',(req,res)=>{
+    res.render('chatlog/index',{title:'ChatLogs'});
+});
+
 app.get('/:id', (req, res, next)=> {
     db.models.ChatLog.find({where: {id: req.params.id}}).then(log=> {
         if (log !== null && log !== undefined) {

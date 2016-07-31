@@ -1,0 +1,20 @@
+extends ../extends/default
+
+block append navbarinclude
+    include ../navbars/navbar_commands
+
+block append content
+    section#commands.section
+        .container
+            .section-header
+                h1.section-title.wow.fadeInRight(data-wow-duration='1000ms', data-wow-delay='100ms') Commands
+                h2.section-subtitle.wow.fadeInRight(data-wow-duration='1000ms', data-wow-delay='400ms') Remember to prepend the prefix for your server.
+            .row
+                each element,index in commands
+                    .col-md-4.col-sm-6.wow.fadeInDown(data-wow-duration='1000ms', data-wow-delay=300 + index * 50 + 'ms')
+                        .features
+                            .icon
+                                i.mdi.mdi-code-greater-than
+                            .features-text
+                                h4
+                                    a(href='/commands/'+element)=element
