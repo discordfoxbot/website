@@ -1,4 +1,4 @@
-var redis = require('../db/redis_db');
+var redis = require('../db').redis;
 var Cron = require('cron').CronJob;
 
 var exprt = {

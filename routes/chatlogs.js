@@ -1,7 +1,7 @@
 var app = require('express').Router();
 var Promise = require('bluebird');
 
-var db = require('../db/sql_db');
+var db = require('../db');
 
 app.get('/',(req,res)=>{
     res.render('chatlog/index',{title:'ChatLogs'});
