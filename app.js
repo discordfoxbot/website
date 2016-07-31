@@ -40,7 +40,7 @@ app.get('/', (req, res)=> {
         header: {
             title: 'Foxbot',
             subtitle: 'A fully featured DiscordBot',
-            button: [{link: '/commands', text: 'Commands'}]
+            button: [{link: '/commands', text: 'Commands'},{link: '/chatlogs', text: 'Chatlogs'}]
         },
         stats: stats()
     });

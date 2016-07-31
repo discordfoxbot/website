@@ -32,7 +32,7 @@ app.get('/', (req, res)=> {
         pagetitle: 'FoxBot commands', header: {
             title: 'Foxbot',
             subtitle: 'A fully featured DiscordBot',
-            button:  [{link: '/commands', text: 'Commands'}]
+            button:  [{link: '/', text: 'Home'}]
         }, commands: list
     });
 });
@@ -42,7 +42,7 @@ app.get('/:command', (req, res, next)=> {
         res.render('commands/command', {
             pagetitle: req.params.command,
             header: {
-                button: [{link: '/commands', text: 'Commands'}]
+                button: [{link: '/commands', text: 'Commands'},{link: '/', text: 'Home'}]
             },
             command: commands[req.params.command],
             subcommands: commands[req.params.command].sublist
@@ -57,7 +57,7 @@ app.get('/:command/:subcommand', (req, res, next)=> {
             header: {
                 title: 'Foxbot',
                 subtitle: 'A fully featured DiscordBot',
-                button:  [{link: '/commands', text: 'Commands'}]
+                button:  [{link: '/commands', text: 'Commands'},{link: '/', text: 'Home'}]
             },
             command: commands[req.params.command].subcommands[req.params.subcommand]
         });
