@@ -17,13 +17,16 @@ var list = function () {
                 keys.forEach((subkey)=> {
                     commands[key].subcommands[subkey].name = subkey;
                     commands[key].subcommands[subkey].usage = utils.replace(commands[key].subcommands[subkey].usage, {command: key + ' ' + subkey});
-                    sublist.push(commands[key].subcommands[subkey].name);
+                    sublist.push({
+                        name: commands[key].subcommands[subkey].name,
+                        link: commands[key].name + '/' + commands[key].subcommands[subkey].name
+                    });
                     list.push({
                         name: commands[key].name + ' ' + commands[key].subcommands[subkey].name,
                         link: commands[key].name + '/' + commands[key].subcommands[subkey].name
                     });
                 });
-                return list;
+                return sublist;
             }()
         }
     });
@@ -52,6 +55,7 @@ app.get('/:command', (req, res, next)=> {
             command: commands[req.params.command],
             subcommands: commands[req.params.command].sublist
         });
+        console.log(commands[req.params.command].sublist);
     } else next(404);
 });
 

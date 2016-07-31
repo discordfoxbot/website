@@ -167,18 +167,24 @@ module.exports = {
                 }
             }
         },
-        chatlog:{
+        chatlog: {
             usage: '&{command}',
             alias: null,
-            description:'Displays a short helptext for chatlogs.',
-            perm:0,
-            subcommands:{
-                create:{
+            description: 'Displays a short helptext for chatlogs.',
+            perm: 0,
+            subcommands: {
+                create: {
                     usage: '&{command} (count)',
                     alias: null,
-                    description:'Creates a chatlog of the last messages specified in count and returns a link for it.'
+                    description: 'Creates a chatlog of the last messages specified in count and returns a link for it.'
                 }
             }
+        },
+        commands: {
+            usage: '&{command}',
+            alias: null,
+            description: 'Dispalys to link to the command page',
+            perm: 0
         }
     }
 };
