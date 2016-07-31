@@ -51,17 +51,19 @@ app.get('/:command', (req, res, next)=> {
 });
 
 app.get('/:command/:subcommand', (req, res, next)=> {
-    if (commands[req.params.command].subcommands[req.params.subcommand] !== undefined) {
-        res.render('commands/command', {
-            pagetitle: req.params.command,
-            header: {
-                title: 'Foxbot',
-                subtitle: 'A fully featured DiscordBot',
-                button:  [{link: '/commands', text: 'Commands'},{link: '/', text: 'Home'}]
-            },
-            command: commands[req.params.command].subcommands[req.params.subcommand]
-        });
-    } else next(404);
+    if(commands[req.params.command]){
+        if (commands[req.params.command].subcommands[req.params.subcommand] !== undefined) {
+            res.render('commands/command', {
+                pagetitle: req.params.command,
+                header: {
+                    title: 'Foxbot',
+                    subtitle: 'A fully featured DiscordBot',
+                    button:  [{link: '/commands', text: 'Commands'},{link: '/', text: 'Home'}]
+                },
+                command: commands[req.params.command].subcommands[req.params.subcommand]
+            });
+        } else next(404);
+    }else next(404);
 });
 
 module.exports = app;
