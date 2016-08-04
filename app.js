@@ -33,6 +33,7 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use('/characters', require('./routes/characters'));
 app.use('/commands', require('./routes/commands'));
 app.use('/chatlogs', require('./routes/chatlogs'));
+app.use('/dmca', require('./routes/dmca'));
 
 app.get('/', (req, res)=> {
     res.render('index', {
@@ -40,7 +41,7 @@ app.get('/', (req, res)=> {
         header: {
             title: 'Foxbot',
             subtitle: 'A fully featured DiscordBot',
-            button: [{link: '/commands', text: 'Commands'},{link: '/chatlogs', text: 'Chatlogs'}]
+            button: [{link: '/commands', text: 'Commands'}, {link: '/chatlogs', text: 'Chatlogs'}]
         },
         stats: stats()
     });
