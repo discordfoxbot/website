@@ -1,6 +1,7 @@
 var app = require('express').Router();
 
 var utils = require('../lib/utils');
+var config = require('../config');
 
 var commands = require('../data/commands').commands;
 var list = function () {
@@ -41,7 +42,8 @@ app.get('/', (req, res)=> {
             subtitle: 'A fully featured DiscordBot',
             button: [{link: '/', text: 'Home'}]
         },
-        commands: list
+        commands: list,
+        cdnurl:config.cdn_url
     });
 });
 
@@ -53,7 +55,8 @@ app.get('/:command', (req, res, next)=> {
                 button: [{link: '/commands', text: 'Commands'}, {link: '/', text: 'Home'}]
             },
             command: commands[req.params.command],
-            subcommands: commands[req.params.command].sublist
+            subcommands: commands[req.params.command].sublist,
+            cdnurl:config.cdn_url
         });
         console.log(commands[req.params.command].sublist);
     } else next(404);
@@ -69,7 +72,8 @@ app.get('/:command/:subcommand', (req, res, next)=> {
                     subtitle: 'A fully featured DiscordBot',
                     button: [{link: '/commands', text: 'Commands'}, {link: '/', text: 'Home'}]
                 },
-                command: commands[req.params.command].subcommands[req.params.subcommand]
+                command: commands[req.params.command].subcommands[req.params.subcommand],
+                cdnurl:config.cdn_url
             });
         } else next(404);
     } else next(404);

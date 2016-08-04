@@ -2,9 +2,10 @@ var app = require('express').Router();
 var Promise = require('bluebird');
 
 var db = require('../db');
+var config = require('../config');
 
 app.get('/', (req, res)=> {
-    res.render('chatlog/index', {pagetitle: 'ChatLogs', header: {button: [{link: '/', text: 'Home'}]}});
+    res.render('chatlog/index', {pagetitle: 'ChatLogs', header: {button: [{link: '/', text: 'Home'}]},cdnurl:config.cdn_url});
 });
 
 app.get('/:id', (req, res, next)=> {
@@ -18,7 +19,8 @@ app.get('/:id', (req, res, next)=> {
                         channel,
                         guild,
                         log,
-                        header: {button: [{link: '/', text: 'Home'}]}
+                        header: {button: [{link: '/', text: 'Home'}]},
+                        cdnurl:config.cdn_url
                     });
                 });
             });

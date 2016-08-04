@@ -3,7 +3,6 @@ process.env.NODE_ENV = 'production';
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
-var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var storyboard = require('storyboard');
 var S = require('string');
@@ -12,6 +11,7 @@ var story = storyboard.mainStory;
 storyboard.addListener(require('storyboard/lib/listeners/console').default);
 
 var stats = require('./data/stats');
+var config = require('./config');
 
 var app = express();
 
@@ -43,7 +43,8 @@ app.get('/', (req, res)=> {
             subtitle: 'A fully featured DiscordBot',
             button: [{link: '/commands', text: 'Commands'}, {link: '/chatlogs', text: 'Chatlogs'}]
         },
-        stats: stats()
+        stats: stats(),
+        cdnurl:config.cdn_url
     });
 });
 
