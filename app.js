@@ -44,7 +44,7 @@ app.get('/', (req, res)=> {
             button: [{link: '/commands', text: 'Commands'}, {link: '/chatlogs', text: 'Chatlogs'}]
         },
         stats: stats(),
-        cdnurl:config.cdn_url
+        cdnurl: config.cdn_url
     });
 });
 
