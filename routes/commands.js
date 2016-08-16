@@ -58,7 +58,6 @@ app.get('/:command', (req, res, next)=> {
             subcommands: commands[req.params.command].sublist,
             cdnurl:config.cdn_url
         });
-        console.log(commands[req.params.command].sublist);
     } else next(404);
 });
 
