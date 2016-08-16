@@ -185,6 +185,32 @@ module.exports = {
             alias: null,
             description: 'Dispalys to link to the command page',
             perm: 0
+        },
+        broadcast:{
+            usage: '&{command} [message]',
+            alias:null,
+            description:'Prepares a Broadcast for being sent to the users.',
+            perm:3,
+            subcommands:{
+                confirm:{
+                    usage: '&{command} [code]',
+                    alias:null,
+                    description:'Triggers sending for an existing broadcast',
+                    perm:0,
+                },
+                enable:{
+                    usage: '&{command}',
+                    alias:null,
+                    description:'Enables receiving broadcasts.',
+                    perm:3,
+                },
+                disable:{
+                    usage: '&{command}',
+                    alias:null,
+                    description:'Disables receiving broadcasts.',
+                    perm:3,
+                }
+            }
         }
     }
 };
