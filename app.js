@@ -52,9 +52,20 @@ app.get('/invite', (req, res)=> {
     res.redirect('https://discordapp.com/oauth2/authorize?access_type=online&client_id=168751105558183936&scope=bot&permissions=473031686&redirect_uri=https://foxbot.fuechschen.org/oauth/callback')
 });
 
+app.use((req,res,next)=>{next(404)});
+
 app.use(function (err, req, res, next) {
-    if (typeof err === 'number')res.status(err).send(err + ' - An error ocured. Sorry..');
-    else res.status(500).send('An unknown error occured. We\'re working on it!');
+    if (typeof err === 'number') {
+        var msg = '';
+        switch (err) {
+            case 404:
+                msg = 'Page not found';
+                break;
+            default:
+                msg = 'An error occurred.'
+        }
+        res.status(err).render('error', {code: err, message: msg});
+    } else res.status(500).render('error', {code: 500, message: 'Internal Server Error', excuse: true});
     story.error('http', 'Http reported an error.', {attach: err});
 });
 
