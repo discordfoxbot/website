@@ -19,5 +19,13 @@
     "storyboard": "^2.0.0-alpha.4",
     "string": "^3.3.1",
     "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.12",
+    "gulp-js-obfuscator": "^1.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.0.0"
   }
 }
