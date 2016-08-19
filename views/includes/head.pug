@@ -5,14 +5,16 @@ block head
         meta(name='keywords', content='Discord, FoxBot, Bot')
         meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
         meta(name='author', content='Fuechschen')
+        //prevent favicon requests
+        link(rel='icon', href='data:;base64,iVBORw0KGgo=')
 
     block page-title
         title=pagetitle
 
     block css
-        link(href=(cdnurl||'')+'/public/stylesheets/bootstrap.min.css', rel='stylesheet')
-        link(href=(cdnurl||'')+'/public/stylesheets/animate.min.css', rel='stylesheet')
-        link(rel='stylesheet', href=(cdnurl||'')+'/public/stylesheets/font-awesome.min.css', type='text/css', media='screen')
-        link(href=(cdnurl||'')+'/public/stylesheets/material.min.css', rel='stylesheet')
-        link(href=(cdnurl||'')+'/public/stylesheets/main.min.css', rel='stylesheet')
-        link(href=(cdnurl||'')+'/public/stylesheets/materialdesignicons.min.css',rel='stylesheet')
+        link(href=(cdnurl || '') + '/public/stylesheets/bootstrap.min.css', rel='stylesheet')
+        link(href=(cdnurl || '') + '/public/stylesheets/animate.min.css', rel='stylesheet')
+        link(href=(cdnurl || '') + '/public/stylesheets/font-awesome.min.css',rel='stylesheet', type='text/css', media='screen')
+        link(href=(cdnurl || '') + '/public/stylesheets/material.min.css', rel='stylesheet')
+        link(href=(cdnurl || '') + '/public/stylesheets/main.min.css', rel='stylesheet')
+        link(href=(cdnurl || '') + '/public/stylesheets/materialdesignicons.min.css',rel='stylesheet')

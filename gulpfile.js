@@ -7,6 +7,7 @@ var gulp = require('gulp'),
     //jsonmerge = require('gulp-merge-json'),
     //jsonminify = require('gulp-jsonminify'),
     obfuscate = require('gulp-js-obfuscator'),
+    gfonts = require('gulp-google-webfonts'),
     uglify = require('gulp-uglify');
 
 gulp.task('default', ['clean'], ()=> {

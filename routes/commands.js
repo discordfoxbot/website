@@ -36,7 +36,7 @@ var list = function () {
 
 app.get('/', (req, res)=> {
     res.render('commands/index', {
-        pagetitle: 'FoxBot commands',
+        pagetitle: 'FoxBot Commands',
         header: {
             title: 'Foxbot',
             subtitle: 'A fully featured DiscordBot',
@@ -65,7 +65,7 @@ app.get('/:command/:subcommand', (req, res, next)=> {
     if (commands[req.params.command]) {
         if (commands[req.params.command].subcommands[req.params.subcommand] !== undefined) {
             res.render('commands/command', {
-                pagetitle: req.params.command,
+                pagetitle: req.params.command + ' ' + req.params.subcommand,
                 header: {
                     title: 'Foxbot',
                     subtitle: 'A fully featured DiscordBot',
