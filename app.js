@@ -18,7 +18,7 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-app.set('trust proxy',['loopback']);
+app.set('trust proxy', ['loopback']);
 
 app.use(logger('short', {
     stream: {
@@ -53,7 +53,13 @@ app.get('/invite', (req, res)=> {
     res.redirect('https://discordapp.com/oauth2/authorize?access_type=online&client_id=168751105558183936&scope=bot&permissions=473031686&redirect_uri=https://foxbot.fuechschen.org/oauth/callback')
 });
 
-app.use((req,res,next)=>{next(404)});
+app.get('/issues', (req, res)=> {
+    res.redirect('https://github.com/discordfoxbot/bot/issues');
+});
+
+app.use((req, res, next)=> {
+    next(404)
+});
 
 app.use(function (err, req, res, next) {
     if (typeof err === 'number') {
