@@ -57,6 +57,10 @@ app.get('/issues', (req, res)=> {
     res.redirect('https://github.com/discordfoxbot/bot/issues');
 });
 
+app.get('/repo', (req, res)=> {
+    res.redirect('https://github.com/discordfoxbot/bot')
+});
+
 app.use((req, res, next)=> {
     next(404)
 });
