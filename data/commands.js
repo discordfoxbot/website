@@ -186,29 +186,43 @@ module.exports = {
             description: 'Dispalys to link to the command page',
             perm: 0
         },
-        broadcast:{
+        broadcast: {
             usage: '&{command} [message]',
-            alias:null,
-            description:'Prepares a Broadcast for being sent to the users.',
-            perm:3,
-            subcommands:{
-                confirm:{
+            alias: null,
+            description: 'Prepares a Broadcast for being sent to the users.',
+            perm: 3,
+            subcommands: {
+                confirm: {
                     usage: '&{command} [code]',
-                    alias:null,
-                    description:'Triggers sending for an existing broadcast',
-                    perm:0,
+                    alias: null,
+                    description: 'Triggers sending for an existing broadcast',
+                    perm: 0,
                 },
-                enable:{
+                enable: {
                     usage: '&{command}',
-                    alias:null,
-                    description:'Enables receiving broadcasts.',
-                    perm:3,
+                    alias: null,
+                    description: 'Enables receiving broadcasts.',
+                    perm: 3,
                 },
-                disable:{
+                disable: {
                     usage: '&{command}',
-                    alias:null,
-                    description:'Disables receiving broadcasts.',
-                    perm:3,
+                    alias: null,
+                    description: 'Disables receiving broadcasts.',
+                    perm: 3,
+                }
+            }
+        },
+        github: {
+            usage: '&{command}',
+            alias: null,
+            description: 'Links to this page.',
+            perm: 0,
+            subcommands: {
+                create: {
+                    usage: '&{command}',
+                    alias: null,
+                    description: 'Creates a new WebHook-Endpoint for Github to report into the current channel. Supported events: "star","push"',
+                    perm: 3
                 }
             }
         }
