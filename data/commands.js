@@ -222,6 +222,12 @@ module.exports = {
                     usage: '&{command}',
                     alias: null,
                     description: 'Creates a new WebHook-Endpoint for Github to report into the current channel. You can use the returned link for as many webhooks as you want Supported events: "star","push"',
+                    perm: 2
+                },
+                remove: {
+                    usage: '&{command}',
+                    alias: null,
+                    description: 'Removes the WebHook endpoint for this channel.',
                     perm: 3
                 }
             }
