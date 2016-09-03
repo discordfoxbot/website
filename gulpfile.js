@@ -28,7 +28,7 @@ gulp.task('scripts', function () {
 
 gulp.task('stylesheets', function () {
     return gulp.src('public_source/stylesheets/*.css')
-        .pipe(cleanCSS({debug: true}))
+        .pipe(cleanCSS({debug: true, processImportFrom: ['!fonts.googleapis.com']}))
         .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('public/stylesheets'));
 });
