@@ -194,6 +194,11 @@ html
                     document.getElementById('home_button').className = '';
                 }
             };
+        if(code === 500 || code === 502 || code === 503 || code === 504)
+            script.
+                setTimeout(function () {
+                    window.location.reload(true);
+                },15000);
     body
         .wrapper
             .center
@@ -206,5 +211,9 @@ html
                 p
                     small#hide.hide
                         | Alright. You can stop clicking... it's not going to make the site come back sooner!
-                div#home_button.hide
-                    a.home_button(href='/') Home
+                div
+                    if(code !== 500 && code !== 502 && code !== 503 && code !== 504)
+                        a#home_button.home_button.hide(href='/') Home
+                    if(code === 404)
+                        a.home_button(href='javascript:history.back()') Back
+
