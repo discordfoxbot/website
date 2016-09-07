@@ -17,3 +17,10 @@ block scripts
             // This command is used to initialize some elements and make them work properly
             $.material.init();
         });
+    script.
+        window.cookieconsent_options = {
+            theme:'/public/stylesheets/cookie_consent.min.css',
+            dismiss:'Dismiss',
+            message:'This website uses cookies to improve the website for you and future visitors.'
+        };
+    script(src=(cdnurl||'')+'/public/scripts/cookie_consent.min.js')

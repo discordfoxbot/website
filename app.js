@@ -50,7 +50,7 @@ app.get('/', (req, res)=> {
 });
 
 app.get('/invite', (req, res)=> {
-    res.redirect('https://discordapp.com/oauth2/authorize?access_type=online&client_id=168751105558183936&scope=bot&permissions=473031686&redirect_uri=https://foxbot.fuechschen.org/oauth/callback')
+    res.redirect('https://discordapp.com/oauth2/authorize?access_type=online&client_id=168751105558183936&scope=bot&permissions=67464192')
 });
 
 app.get('/issues', (req, res)=> {
