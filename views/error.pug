@@ -212,8 +212,7 @@ html
                     small#hide.hide
                         | Alright. You can stop clicking... it's not going to make the site come back sooner!
                 div
+                    if(code === 404)
+                        a.home_button(href='http://Back.',onclick='history.back();') Back
                     if(code !== 500 && code !== 502 && code !== 503 && code !== 504)
                         a#home_button.home_button.hide(href='/') Home
-                    if(code === 404)
-                        a.home_button(href='javascript:history.back()') Back
-
