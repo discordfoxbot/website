@@ -3,7 +3,6 @@ block scripts
     script(src=(cdnurl||'')+'/public/scripts/bootstrap.min.js')
     script(src=(cdnurl||'')+'/public/scripts/ripples.min.js')
     script(src=(cdnurl||'')+'/public/scripts/material.min.js')
-    script(src=(cdnurl||'')+'/public/scripts/wow.min.js')
     script(src=(cdnurl||'')+'/public/scripts/jquery.mmenu.all.min.js')
     script(src=(cdnurl||'')+'/public/scripts/count-to.min.js')
     script(src=(cdnurl||'')+'/public/scripts/jquery.inview.min.js')
@@ -24,3 +23,6 @@ block scripts
             message:'This website uses cookies to improve the website for you and future visitors.'
         };
     script(src=(cdnurl||'')+'/public/scripts/cookie_consent.min.js')
+
+block append head-scripts
+    script(src=(cdnurl||'')+'/public/scripts/wow.min.js')
