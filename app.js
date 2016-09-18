@@ -10,7 +10,6 @@ var S = require('string');
 var story = storyboard.mainStory;
 storyboard.addListener(require('storyboard/lib/listeners/console').default);
 
-var stats = require('./data/stats');
 var config = require('./config');
 
 var app = express();
@@ -44,7 +43,6 @@ app.get('/', (req, res)=> {
             subtitle: 'A fully featured DiscordBot',
             button: [{link: '/commands', text: 'Commands'}, {link: '/chatlogs', text: 'Chatlogs'}]
         },
-        stats: stats(),
         cdnurl: config.cdn_url
     });
 });
@@ -73,7 +71,8 @@ app.use(function (err, req, res, next) {
                 msg = 'Page not found';
                 break;
             default:
-                msg = 'An error occurred.'
+                msg = 'An error occurred.';
+                break;
         }
         res.status(err).render('error', {code: err, message: msg});
     } else res.status(500).render('error', {code: 500, message: 'Internal Server Error', excuse: true});
