@@ -3,7 +3,6 @@ process.env.NODE_ENV = 'production';
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
-var bodyParser = require('body-parser');
 var storyboard = require('storyboard');
 var S = require('string');
 
@@ -27,7 +26,6 @@ app.use(logger('short', {
     }
 }));
 
-app.use(bodyParser.json());
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.use('/characters', require('./routes/characters'));
