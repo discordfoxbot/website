@@ -14,7 +14,7 @@ function ssc_init() {
     var t = document.documentElement;
     var n = window.innerHeight;
     var r = e.scrollHeight;
-    ssc_root = document.compatMode.indexOf("CSS") >= 0 ? t : e;
+    ssc_root = document.compatMode.includes("CSS") ? t : e;
     ssc_activeElement = e;
     ssc_initdone = true;
     if (top != self) {
@@ -42,7 +42,7 @@ function ssc_scrollArray(e, t, n, r) {
     if (ssc_pending) {
         return
     }
-    var i = function () {
+    var i = () => {
         var s = +(new Date);
         var o = 0;
         var u = 0;
@@ -250,15 +250,13 @@ var ssc_key = {left: 37, up: 38, right: 39, down: 40, spacebar: 32, pageup: 33, 
 var ssc_que = [];
 var ssc_pending = false;
 var ssc_cache = {};
-setInterval(function () {
+setInterval(() => {
     ssc_cache = {}
 }, 10 * 1e3);
-var ssc_uniqueID = function () {
+var ssc_uniqueID = (() => {
     var e = 0;
-    return function (t) {
-        return t.ssc_uniqueID || (t.ssc_uniqueID = e++)
-    }
-}();
+    return t => t.ssc_uniqueID || (t.ssc_uniqueID = e++)
+})();
 var ischrome = /chrome/.test(navigator.userAgent.toLowerCase());
 if (ischrome) {
     ssc_addEvent("mousedown", ssc_mousedown);

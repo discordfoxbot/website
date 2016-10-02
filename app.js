@@ -61,7 +61,7 @@ app.use((req, res, next)=> {
     next(404)
 });
 
-app.use(function (err, req, res, next) {
+app.use((err, req, res, next) => {
     if (typeof err === 'number') {
         var msg = '';
         switch (err) {

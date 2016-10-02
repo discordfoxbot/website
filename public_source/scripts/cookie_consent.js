@@ -1,4 +1,4 @@
-(function () {
+((() => {
     // Stop from running again, if accidentally included more than once.
     if (window.hasCookieConsent) return;
     window.hasCookieConsent = true;
@@ -22,7 +22,7 @@
     var THEME_BUCKET_PATH = '//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.10/';
 
     // No point going further if they've already dismissed.
-    if (document.cookie.indexOf(DISMISSED_COOKIE) > -1 || (window.navigator && window.navigator.CookiesOK)) {
+    if (document.cookie.includes(DISMISSED_COOKIE) || (window.navigator && window.navigator.CookiesOK)) {
         return;
     }
 
@@ -62,7 +62,7 @@
 
         merge: function (obj1, obj2) {
             if (!obj1) return;
-            Util.each(obj2, function (val, key) {
+            Util.each(obj2, (val, key) => {
                 if (Util.isObject(val) && Util.isObject(obj1[key])) {
                     Util.merge(obj1[key], val);
                 } else {
@@ -93,21 +93,19 @@
             return null;
         },
 
-        setCookie: function (name, value, expiryDays, domain, path) {
-            expiryDays = expiryDays || 365;
-
+        setCookie: function(name, value, expiryDays = 365, domain, path) {
             var exdate = new Date();
             exdate.setDate(exdate.getDate() + expiryDays);
 
             var cookie = [
-                name + '=' + value,
-                'expires=' + exdate.toUTCString(),
-                'path=' + path || '/'
+                `${name}=${value}`,
+                `expires=${exdate.toUTCString()}`,
+                `path=${path}` || '/'
             ];
 
             if (domain) {
                 cookie.push(
-                    'domain=' + domain
+                    `domain=${domain}`
                 );
             }
 
@@ -118,12 +116,12 @@
             if (el.addEventListener) {
                 el.addEventListener(event, eventListener);
             } else {
-                el.attachEvent('on' + event, eventListener);
+                el.attachEvent(`on${event}`, eventListener);
             }
         }
     };
 
-    var DomBuilder = (function () {
+    var DomBuilder = ((() => {
         /*
          The attribute we store events in.
          */
@@ -133,10 +131,10 @@
         /*
          Shim to make addEventListener work correctly with IE.
          */
-        var addEventListener = function (el, event, eventListener) {
+        var addEventListener = (el, event, eventListener) => {
             // Add multiple event listeners at once if array is passed.
             if (Util.isArray(event)) {
-                return Util.each(event, function (ev) {
+                return Util.each(event, ev => {
                     addEventListener(el, ev, eventListener);
                 });
             }
@@ -144,7 +142,7 @@
             if (el.addEventListener) {
                 el.addEventListener(event, eventListener);
             } else {
-                el.attachEvent('on' + event, eventListener);
+                el.attachEvent(`on${event}`, eventListener);
             }
         };
 
@@ -152,38 +150,36 @@
          Replace {{variable.name}} with it's property on the scope
          Also supports {{variable.name || another.name || 'string'}}
          */
-        var insertReplacements = function (htmlStr, scope) {
-            return htmlStr.replace(/\{\{(.*?)\}\}/g, function (_match, sub) {
-                var tokens = sub.split('||');
-                var value, token;
-                while (token = tokens.shift()) {
-                    token = token.trim();
+        var insertReplacements = (htmlStr, scope) => htmlStr.replace(/\{\{(.*?)\}\}/g, (_match, sub) => {
+            var tokens = sub.split('||');
+            var value, token;
+            while (token = tokens.shift()) {
+                token = token.trim();
 
-                    // If string
-                    if (token[0] === '"') return token.slice(1, token.length - 1);
+                // If string
+                if (token[0] === '"') return token.slice(1, token.length - 1);
 
-                    // If query matches
-                    value =  Util.queryObject(scope, token);
+                // If query matches
+                value =  Util.queryObject(scope, token);
 
-                    if (value) return value;
-                }
+                if (value) return value;
+            }
 
-                return '';
-            });
-        };
+            return '';
+        });
 
         /*
          Turn a string of html into DOM
          */
-        var buildDom = function (htmlStr) {
+        var buildDom = htmlStr => {
             var container = document.createElement('div');
             container.innerHTML = htmlStr;
             return container.children[0];
         };
 
-        var applyToElementsWithAttribute = function (dom, attribute, func) {
-            var els = dom.parentNode.querySelectorAll('[' + attribute + ']');
-            Util.each(els, function (element) {
+        var applyToElementsWithAttribute = (dom, attribute, func) => {
+            var els = dom.parentNode.querySelectorAll(`[${attribute}]`);
+            Util.each(els, element => {
                 var attributeVal = element.getAttribute(attribute);
                 func(element, attributeVal);
             }, window, true);
@@ -192,16 +188,16 @@
         /*
          Parse event attributes in dom and set listeners to their matching scope methods
          */
-        var applyEvents = function (dom, scope) {
-            applyToElementsWithAttribute(dom, eventAttribute, function (element, attributeVal) {
+        var applyEvents = (dom, scope) => {
+            applyToElementsWithAttribute(dom, eventAttribute, (element, attributeVal) => {
                 var parts = attributeVal.split(':');
                 var listener = Util.queryObject(scope, parts[1]);
                 addEventListener(element, parts[0], Util.bind(listener, scope));
             });
         };
 
-        var applyConditionals = function (dom, scope) {
-            applyToElementsWithAttribute(dom, conditionAttribute, function (element, attributeVal) {
+        var applyConditionals = (dom, scope) => {
+            applyToElementsWithAttribute(dom, conditionAttribute, (element, attributeVal) => {
                 var value = Util.queryObject(scope, attributeVal);
                 if (!value) {
                     element.parentNode.removeChild(element);
@@ -221,7 +217,7 @@
                 return dom;
             }
         };
-    })();
+    }))();
 
 
     /*
@@ -284,7 +280,7 @@
 
             // Add class to container classes so we can specify css for IE8 only.
             this.containerClasses = '';
-            if (navigator.appVersion.indexOf('MSIE 8') > -1) {
+            if (navigator.appVersion.includes('MSIE 8')) {
                 this.containerClasses += ' cc_ie8'
             }
         },
@@ -293,8 +289,8 @@
             var theme = this.options.theme;
 
             // If theme is specified by name
-            if (theme.indexOf('.css') === -1) {
-                theme = THEME_BUCKET_PATH + theme + '.css';
+            if (!theme.includes('.css')) {
+                theme = `${THEME_BUCKET_PATH + theme}.css`;
             }
 
             var link = document.createElement('link');
@@ -342,7 +338,7 @@
 
     var init;
     var initialized = false;
-    (init = function () {
+    (init = () => {
         if (!initialized && document.readyState == 'complete') {
             cookieconsent.init();
             initialized = true;
@@ -352,4 +348,4 @@
 
     Util.addEventListener(document, 'readystatechange', init);
 
-})();
+}))();

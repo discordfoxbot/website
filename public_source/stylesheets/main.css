@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:700,400,100);
+@import url('/public/stylesheets/roboto.min.css');
 
 body {
     font-family: 'Roboto', sans-serif;

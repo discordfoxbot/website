@@ -1,8 +1,6 @@
-(function ($) {
-	$.fn.countTo = function (options) {
-		options = options || {};
-
-		return $(this).each(function () {
+(($ => {
+	$.fn.countTo = function(options = {}) {
+        return $(this).each(function () {
 			// set options for current element
 			var settings = $.extend({}, $.fn.countTo.defaults, {
 				from:            $(this).data('from'),
@@ -61,7 +59,7 @@
 				$self.text(formattedValue);
 			}
 		});
-	};
+    };
 
 	$.fn.countTo.defaults = {
 		from: 0,               // the number the element should start at
@@ -69,7 +67,7 @@
 		speed: 1000,           // how long it should take to count between the target numbers
 		refreshInterval: 100,  // how often the element should be updated
 		decimals: 0,           // the number of decimal places to show
-		formatter: formatter,  // handler for formatting the value before rendering
+		formatter,  // handler for formatting the value before rendering
 		onUpdate: null,        // callback method for every time the element is updated
 		onComplete: null       // callback method for when the element finishes updating
 	};
@@ -77,4 +75,4 @@
 	function formatter(value, settings) {
 		return value.toFixed(settings.decimals);
 	}
-}(jQuery));
+})(jQuery));

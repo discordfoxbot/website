@@ -1,253 +1,253 @@
 module.exports = {
-    language: 'en',
+    language: `en`,
     commands: {
         help: {
-            usage: '&{command}',
+            usage: (replacer)=>`${replacer.command}`,
             alias: null,
-            description: 'Displays a general helptext.',
+            description: `Displays a general helptext.`,
             perm: 0
         },
         nick: {
-            usage: '&{command} [nick]',
+            usage: (replacer)=>`${replacer.command} [nick]`,
             alias: null,
-            description: 'Changes the nickname of the bot for the guild it is executed on. Use \'reset\' to reset the nickname.',
+            description: `Changes the nickname of the bot for the guild it is executed on. Use \'reset\' to reset the nickname.`,
             perm: 3
         },
         prefix: {
-            usage: '&{command}',
+            usage: (replacer)=>`${replacer.command}`,
             alias: null,
-            description: 'Displays all available prefixes for the guild.',
+            description: `Displays all available prefixes for the guild.`,
             perm: 0,
             subcommands: {
                 add: {
-                    usage: '&{command} [prefix]',
+                    usage: (replacer)=>`${replacer.command} [prefix]`,
                     alias: null,
-                    description: 'Adds a prefix to the guild.',
+                    description: `Adds a prefix to the guild.`,
                     perm: 3
                 },
                 remove: {
-                    usage: '&{command} [prefix]',
+                    usage: (replacer)=>`${replacer.command} [prefix]`,
                     alias: null,
-                    description: 'Removes a prefix from the guild.',
+                    description: `Removes a prefix from the guild.`,
                     perm: 3
                 }
             }
         },
         purge: {
-            usage: '&{command} (count)',
+            usage: (replacer)=>`${replacer.command} (count)`,
             alias: null,
-            description: 'Deletes the the ammount of messages given in count from the channel it is executed in. Count defaults to 25.',
+            description: `Deletes the the ammount of messages given in count from the channel it is executed in. Count defaults to 25.`,
             perm: 3
         },
         cat: {
-            usage: '&{command}',
-            alias: ['kitty', 'kitten'],
-            description: 'Send a cute cat picture.',
+            usage: (replacer)=>`${replacer.command}`,
+            alias: [`kitty`, `kitten`],
+            description: `Send a cute cat picture.`,
             perm: 0
         },
         smile: {
-            usage: '&{command}',
+            usage: (replacer)=>`${replacer.command}`,
             alias: null,
-            description: 'Smiles :D',
+            description: `Smiles :D`,
             perm: 0
         },
         wtf: {
-            usage: '&{command}',
+            usage: (replacer)=>`${replacer.command}`,
             alias: null,
-            description: 'WHTAT THE FUCK!',
+            description: `WHTAT THE FUCK!`,
             perm: 0
         },
         stats: {
-            usage: '&{command}',
+            usage: (replacer)=>`${replacer.command}`,
             alias: null,
-            description: 'Displays some stats of FoxBot.',
+            description: `Displays some stats of FoxBot.`,
             perm: 0,
             subcommands: {
                 guild: {
-                    usage: '&{command}',
-                    alias: ['server'],
-                    description: 'Displays some stats over the guild FoxBot has collected.',
+                    usage: (replacer)=>`${replacer.command}`,
+                    alias: [`server`],
+                    description: `Displays some stats over the guild FoxBot has collected.`,
                     perm: 0
                 }
             }
         },
         watcher: {
-            usage: '&{command}',
-            alias: ['twitchwatcher'],
-            description: 'Displays current watchers for the channel used.',
+            usage: (replacer)=>`${replacer.command}`,
+            alias: [`twitchwatcher`],
+            description: `Displays current watchers for the channel used.`,
             perm: 0,
             subcommands: {
                 add: {
-                    usage: '&{command} [channel]',
+                    usage: (replacer)=>`${replacer.command} [channel]`,
                     alias: null,
-                    description: 'Adds a watcher for the specified twitchchannel. Streammessages will be sent to the channel the command was used in.',
+                    description: `Adds a watcher for the specified twitchchannel. Streammessages will be sent to the channel the command was used in.`,
                     perm: 2
                 },
                 remove: {
-                    usage: '&{command} [channel]',
+                    usage: (replacer)=>`${replacer.command} [channel]`,
                     alias: null,
-                    description: 'Removes the watcher for the specified twitchchannel.',
+                    description: `Removes the watcher for the specified twitchchannel.`,
                     perm: 2
                 }
             }
         },
         waifu: {
-            usage: '&{command}',
+            usage: (replacer)=>`${replacer.command}`,
             alias: null,
-            description: 'Displays a picture of your current waifu (or/and randomly assigns you one if you don\'t have one registerd.)',
+            description: `Displays a picture of your current waifu (or/and randomly assigns you one if you don\'t have one registerd.)`,
             perm: 0,
             subcommands: {
                 id: {
-                    usage: '&{command}',
+                    usage: (replacer)=>`${replacer.command}`,
                     alias: null,
-                    description: 'Returns the internal ID of your current waifu.',
+                    description: `Returns the internal ID of your current waifu.`,
                     perm: 0
                 },
                 list: {
-                    usage: '&{command}',
+                    usage: (replacer)=>`${replacer.command}`,
                     alias: null,
-                    description: 'Returns a list for all available waifus.',
+                    description: `Returns a list for all available waifus.`,
                     perm: 0
                 },
                 search: {
-                    usage: '&{command} [name]',
+                    usage: (replacer)=>`${replacer.command} [name]`,
                     alias: null,
-                    description: 'Searches for a waifu in FoxBot\'s internal database',
+                    description: `Searches for a waifu in FoxBot\'s internal database`,
                     perm: 0
                 },
                 set: {
-                    usage: '&{command} [id]',
+                    usage: (replacer)=>`${replacer.command} [id]`,
                     alias: null,
-                    description: 'Sets your waifu.',
+                    description: `Sets your waifu.`,
                     perm: 0
                 },
                 addpicture: {
-                    usage: '&{command} (id) [picture link]',
+                    usage: (replacer)=>`${replacer.command} (id) [picture link]`,
                     alias: null,
-                    description: 'Adds a picture to your waifu (or the waifu specified in the id). Pictures will be uploaded to gg.fuechschen.space and be queued for verification through one of FoxBot\'s managers.',
+                    description: `Adds a picture to your waifu (or the waifu specified in the id). Pictures will be uploaded to gg.fuechschen.space and be queued for verification through one of FoxBot\'s managers.`,
                     perm: 0
                 }
             }
         },
         husbando: {
-            usage: '&{command}',
+            usage: (replacer)=>`${replacer.command}`,
             alias: null,
-            description: 'Displays a picture of your current husbando (or/and randomly assigns you one if you don\'t have one registerd.)',
+            description: `Displays a picture of your current husbando (or/and randomly assigns you one if you don\'t have one registerd.)`,
             perm: 0,
             subcommands: {
                 id: {
-                    usage: '&{command}',
+                    usage: (replacer)=>`${replacer.command}`,
                     alias: null,
-                    description: 'Returns the internal ID of your current husbando.',
+                    description: `Returns the internal ID of your current husbando.`,
                     perm: 0
                 },
                 list: {
-                    usage: '&{command}',
+                    usage: (replacer)=>`${replacer.command}`,
                     alias: null,
-                    description: 'Returns a list for all available husbandos.',
+                    description: `Returns a list for all available husbandos.`,
                     perm: 0
                 },
                 search: {
-                    usage: '&{command} [name]',
+                    usage: (replacer)=>`${replacer.command} [name]`,
                     alias: null,
-                    description: 'Searches for a husbando in FoxBot\'s internal database',
+                    description: `Searches for a husbando in FoxBot\'s internal database`,
                     perm: 0
                 },
                 set: {
-                    usage: '&{command} [id]',
+                    usage: (replacer)=>`${replacer.command} [id]`,
                     alias: null,
-                    description: 'Sets your husbando.',
+                    description: `Sets your husbando.`,
                     perm: 0
                 },
                 addpicture: {
-                    usage: '&{command} (id) [picture link]',
+                    usage: (replacer)=>`${replacer.command} (id) [picture link]`,
                     alias: null,
-                    description: 'Adds a picture to your husbando (or the husbando specified in the id). Pictures will be uploaded to gg.fuechschen.space and be queued for verification through one of FoxBot\'s managers.',
+                    description: `Adds a picture to your husbando (or the husbando specified in the id). Pictures will be uploaded to gg.fuechschen.space and be queued for verification through one of FoxBot\'s managers.`,
                     perm: 0
                 }
             }
         },
         chatlog: {
-            usage: '&{command}',
+            usage: (replacer)=>`${replacer.command}`,
             alias: null,
-            description: 'Displays a short helptext for chatlogs.',
+            description: `Displays a short helptext for chatlogs.`,
             perm: 0,
             subcommands: {
                 create: {
-                    usage: '&{command} (count)',
+                    usage: (replacer)=>`${replacer.command} (count)`,
                     alias: null,
-                    description: 'Creates a chatlog of the last messages specified in count and returns a link for it.'
+                    description: `Creates a chatlog of the last messages specified in count and returns a link for it.`
                 }
             }
         },
         commands: {
-            usage: '&{command}',
+            usage: (replacer)=>`${replacer.command}`,
             alias: null,
-            description: 'Dispalys to link to the command page',
+            description: `Dispalys to link to the command page`,
             perm: 0
         },
         broadcast: {
-            usage: '&{command} [message]',
+            usage: (replacer)=>`${replacer.command} [message]`,
             alias: null,
-            description: 'Prepares a Broadcast for being sent to the users.',
+            description: `Prepares a Broadcast for being sent to the users.`,
             perm: 3,
             subcommands: {
                 confirm: {
-                    usage: '&{command} [code]',
+                    usage: (replacer)=>`${replacer.command} [code]`,
                     alias: null,
-                    description: 'Triggers sending for an existing broadcast',
+                    description: `Triggers sending for an existing broadcast`,
                     perm: 0,
                 },
                 enable: {
-                    usage: '&{command}',
+                    usage: (replacer)=>`${replacer.command}`,
                     alias: null,
-                    description: 'Enables receiving broadcasts.',
+                    description: `Enables receiving broadcasts.`,
                     perm: 3,
                 },
                 disable: {
-                    usage: '&{command}',
+                    usage: (replacer)=>`${replacer.command}`,
                     alias: null,
-                    description: 'Disables receiving broadcasts.',
+                    description: `Disables receiving broadcasts.`,
                     perm: 3,
                 }
             }
         },
         github: {
-            usage: '&{command}',
+            usage: (replacer)=>`${replacer.command}`,
             alias: null,
-            description: 'Links to this page.',
+            description: `Links to this page.`,
             perm: 0,
             subcommands: {
                 create: {
-                    usage: '&{command}',
+                    usage: (replacer)=>`${replacer.command}`,
                     alias: null,
-                    description: 'Creates a new WebHook-Endpoint for GitHub to report into the current channel. You can use the returned link for as many webhooks as you want Supported events: "star","push"',
+                    description: `Creates a new WebHook-Endpoint for GitHub to report into the current channel. You can use the returned link for as many webhooks as you want Supported events: "star","push"`,
                     perm: 2
                 },
                 remove: {
-                    usage: '&{command}',
+                    usage: (replacer)=>`${replacer.command}`,
                     alias: null,
-                    description: 'Removes the WebHook endpoint for this channel.',
+                    description: `Removes the WebHook endpoint for this channel.`,
                     perm: 3
                 }
             }
         },
         gitlab: {
-            usage: '&{command}',
+            usage: (replacer)=>`${replacer.command}`,
             alias: null,
-            description: 'Links to this page.',
+            description: `Links to this page.`,
             perm: 0,
             subcommands: {
                 create: {
-                    usage: '&{command}',
+                    usage: (replacer)=>`${replacer.command}`,
                     alias: null,
-                    description: 'Creates a new WebHook-Endpoint for Gitlab to report into the current channel. You can use the returned link for as many webhooks as you want Supported events: "star","push"',
+                    description: `Creates a new WebHook-Endpoint for Gitlab to report into the current channel. You can use the returned link for as many webhooks as you want Supported events: "star","push"`,
                     perm: 2
                 },
                 remove: {
-                    usage: '&{command}',
+                    usage: (replacer)=>`${replacer.command}`,
                     alias: null,
-                    description: 'Removes the WebHook endpoint for this channel.',
+                    description: `Removes the WebHook endpoint for this channel.`,
                     perm: 3
                 }
             }

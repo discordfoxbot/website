@@ -2,12 +2,12 @@
 
 
 // Page Loader
-$(window).load(function() {
+$(window).load(() => {
   "use strict";
   $('#loader').fadeOut();
 });
 
-jQuery(function($) {
+jQuery($ => {
 
     //Initiat WOW JS
     new WOW().init();
@@ -45,7 +45,7 @@ jQuery(function($) {
  * Copyright 2014, Codrops
  * http://www.codrops.com
  */
-jQuery(function($) {
+jQuery($ => {
 
     var bodyEl = document.body,
         content = document.querySelector( '.contents' ),

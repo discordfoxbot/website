@@ -1,5 +1,5 @@
 
-jQuery(function($) {
+jQuery($ => {
 
 	//Initiat WOW JS
 	new WOW().init();
@@ -37,7 +37,7 @@ jQuery(function($) {
  * Copyright 2014, Codrops
  * http://www.codrops.com
  */
-(function() {
+((() => {
 
 	var bodyEl = document.body,
 		content = document.querySelector( '.contents' ),
@@ -56,7 +56,7 @@ jQuery(function($) {
 		}
 
 		// close the menu element if the target it´s not the menu element or one of its descendants..
-		content.addEventListener( 'click', function(ev) {
+		content.addEventListener( 'click', ev => {
 			var target = ev.target;
 			if( isOpen && target !== openbtn ) {
 				toggleMenu();
@@ -76,6 +76,6 @@ jQuery(function($) {
 
 	init();
 
-})();
+}))();
 
 });
