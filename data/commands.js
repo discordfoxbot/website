@@ -60,13 +60,13 @@ module.exports = {
         stats: {
             usage: (replacer)=>`${replacer.command}`,
             alias: null,
-            description: `Displays some stats of FoxBot.`,
+            description: `Displays some stats of Kitsune.`,
             perm: 0,
             subcommands: {
                 guild: {
                     usage: (replacer)=>`${replacer.command}`,
                     alias: [`server`],
-                    description: `Displays some stats over the guild FoxBot has collected.`,
+                    description: `Displays some stats over the guild Kitsune has collected.`,
                     perm: 0
                 }
             }
@@ -112,7 +112,7 @@ module.exports = {
                 search: {
                     usage: (replacer)=>`${replacer.command} [name]`,
                     alias: null,
-                    description: `Searches for a waifu in FoxBot\'s internal database`,
+                    description: `Searches for a waifu in Kitsune\'s internal database`,
                     perm: 0
                 },
                 set: {
@@ -124,7 +124,7 @@ module.exports = {
                 addpicture: {
                     usage: (replacer)=>`${replacer.command} (id) [picture link]`,
                     alias: null,
-                    description: `Adds a picture to your waifu (or the waifu specified in the id). Pictures will be uploaded to gg.fuechschen.space and be queued for verification through one of FoxBot\'s managers.`,
+                    description: `Adds a picture to your waifu (or the waifu specified in the id). Pictures will be uploaded to gg.fuechschen.space and be queued for verification through one of Kitsune\'s managers.`,
                     perm: 0
                 }
             }
@@ -150,7 +150,7 @@ module.exports = {
                 search: {
                     usage: (replacer)=>`${replacer.command} [name]`,
                     alias: null,
-                    description: `Searches for a husbando in FoxBot\'s internal database`,
+                    description: `Searches for a husbando in Kitsune\'s internal database`,
                     perm: 0
                 },
                 set: {
@@ -162,7 +162,7 @@ module.exports = {
                 addpicture: {
                     usage: (replacer)=>`${replacer.command} (id) [picture link]`,
                     alias: null,
-                    description: `Adds a picture to your husbando (or the husbando specified in the id). Pictures will be uploaded to gg.fuechschen.space and be queued for verification through one of FoxBot\'s managers.`,
+                    description: `Adds a picture to your husbando (or the husbando specified in the id). Pictures will be uploaded to gg.fuechschen.space and be queued for verification through one of Kitsune\'s managers.`,
                     perm: 0
                 }
             }

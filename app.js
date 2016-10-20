@@ -36,7 +36,7 @@ app.use('/errors', require('./routes/errors'));
 
 app.get('/', (req, res)=> {
     res.render('index', {
-        pagetitle: 'FoxBot',
+        pagetitle: 'Kitsune',
         header: {
             title: 'Kitsune',
             subtitle: 'A fully featured DiscordBot',

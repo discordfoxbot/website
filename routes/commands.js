@@ -35,7 +35,7 @@ var list = (() => {
 
 app.get('/', (req, res)=> {
     res.render('commands/index', {
-        pagetitle: 'FoxBot Commands',
+        pagetitle: 'Kitsune Commands',
         header: {
             title: 'Kitsune',
             subtitle: 'A fully featured DiscordBot',
