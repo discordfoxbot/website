@@ -50,11 +50,11 @@ app.get('/invite', (req, res)=> {
 });
 
 app.get('/issues', (req, res)=> {
-    res.redirect('https://github.com/discordfoxbot/bot/issues');
+    res.redirect('https://github.com/kitsunebot/bot/issues');
 });
 
 app.get('/repo', (req, res)=> {
-    res.redirect('https://github.com/discordfoxbot/bot')
+    res.redirect('https://github.com/kitsunebot/bot')
 });
 
 app.use((req, res, next)=> {
