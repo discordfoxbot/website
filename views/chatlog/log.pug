@@ -3,39 +3,41 @@ extends ../extends/default
 block append navbarinclude
     include ../navbars/navbar_chatlogs
 
+block append page-meta
+    meta(name='log_id' content=logid)
+
+block append scripts
+    script(src=(cdnurl || '') + '/public/scripts/chatlog.min.js')
+
 block append content
     section#meta.main-feature-gray
         .container
             .row
                 .col-md-3.col-sm-6.col-xs-12.wow.fadeInLeft(data-wow-duration='1000ms', data-wow-delay='300ms')
-                    .counter-item
                         .icon
                             i.mdi.mdi-home-modern
-                        h3.timer= guild.name
+                        h3#guild_name= 'Loading...'
                         hr
                         h5
                             | Guild
                 .col-md-3.col-sm-6.col-xs-12.wow.fadeInLeft(data-wow-duration='1000ms', data-wow-delay='500ms')
-                    .counter-item
                         .icon
                             i.mdi.mdi-home
-                        h3.timer= channel.name
+                        h3#channel_name= 'Loading...'
                         hr
                         h5
                             | Channel
                 .col-md-3.col-sm-6.col-xs-12.wow.fadeInRight(data-wow-duration='1000ms', data-wow-delay='700ms')
-                    .counter-item
                         .icon
                             i.mdi.mdi-account
-                        h3.timer= user.username
+                        h3#user_name= 'Loading...'
                         hr
                         h5
                             | User
                 .col-md-3.col-sm-6.col-xs-12.wow.fadeInRight(data-wow-duration='1000ms', data-wow-delay='900ms')
-                    .counter-item
                         .icon
                             i.mdi.mdi-clock
-                        h3.timer=log.time.toISOString()
+                        h3#time='Loading...'
                         hr
                         h5
                             | Time
@@ -46,9 +48,4 @@ block append content
                     td='Username'
                     td='Message'
                     td='Timestamp'
-            tbody
-                each element in messages
-                    tr
-                        td=element.user.username
-                        td=element.message.content
-                        td=element.message.timestamp
+            tbody#log_content

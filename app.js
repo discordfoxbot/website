@@ -32,6 +32,7 @@ app.use('/characters', require('./routes/characters'));
 app.use('/commands', require('./routes/commands'));
 app.use('/chatlogs', require('./routes/chatlogs'));
 app.use('/dmca', require('./routes/dmca'));
+app.use('/errors', require('./routes/errors'));
 
 app.get('/', (req, res)=> {
     res.render('index', {
