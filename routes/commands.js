@@ -37,7 +37,7 @@ app.get('/', (req, res)=> {
     res.render('commands/index', {
         pagetitle: 'FoxBot Commands',
         header: {
-            title: 'Foxbot',
+            title: 'Kitsune',
             subtitle: 'A fully featured DiscordBot',
             button: [{link: '/', text: 'Home'}]
         },
@@ -66,7 +66,7 @@ app.get('/:command/:subcommand', (req, res, next)=> {
             res.render('commands/command', {
                 pagetitle: `${req.params.command} ${req.params.subcommand}`,
                 header: {
-                    title: 'Foxbot',
+                    title: 'Kitsune',
                     subtitle: 'A fully featured DiscordBot',
                     button: [{link: '/commands', text: 'Commands'}, {link: '/', text: 'Home'}]
                 },

@@ -38,7 +38,7 @@ app.get('/', (req, res)=> {
     res.render('index', {
         pagetitle: 'FoxBot',
         header: {
-            title: 'Foxbot',
+            title: 'Kitsune',
             subtitle: 'A fully featured DiscordBot',
             button: [{link: '/commands', text: 'Commands'}, {link: '/chatlogs', text: 'Chatlogs'}]
         },
