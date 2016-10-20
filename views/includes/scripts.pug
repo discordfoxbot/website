@@ -18,7 +18,7 @@ block scripts
         });
     script.
         window.cookieconsent_options = {
-            theme: '/public/stylesheets/cookie_consent.min.css',
+            theme: '!{cdnurl || ''}/public/stylesheets/cookie_consent.min.css',
             dismiss: 'Dismiss',
             message: 'This website uses cookies to improve the website for you and future visitors.'
         };
