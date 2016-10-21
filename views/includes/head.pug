@@ -14,11 +14,11 @@ block head
         title=pagetitle
 
     block css
-        link(href=(cdnurl || '') + '/public/stylesheets/bootstrap.min.css', rel='stylesheet')
-        link(href=(cdnurl || '') + '/public/stylesheets/animate.min.css', rel='stylesheet')
-        link(href=(cdnurl || '') + '/public/stylesheets/font-awesome.min.css',rel='stylesheet', type='text/css', media='screen')
-        link(href=(cdnurl || '') + '/public/stylesheets/material.min.css', rel='stylesheet')
-        link(href=(cdnurl || '') + '/public/stylesheets/main.min.css', rel='stylesheet')
-        link(href=(cdnurl || '') + '/public/stylesheets/materialdesignicons.min.css',rel='stylesheet')
+        link(href=(cdnurl || '') + assets['bootstrap.min.css'], rel='stylesheet')
+        link(href=(cdnurl || '') + assets['animate.min.css'], rel='stylesheet')
+        link(href=(cdnurl || '') + assets['font-awesome.min.css'],rel='stylesheet', type='text/css', media='screen')
+        link(href=(cdnurl || '') + assets['material.min.css'], rel='stylesheet')
+        link(href=(cdnurl || '') + assets['main.min.css'], rel='stylesheet')
+        link(href=(cdnurl || '') + assets['materialdesignicons.min.css'],rel='stylesheet')
 
     block head-scripts

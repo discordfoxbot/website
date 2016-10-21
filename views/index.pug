@@ -4,7 +4,7 @@ block append navbarinclude
     include ./navbars/navbar_index
 
 block append scripts
-    script(src=(cdnurl||'')+'/public/scripts/stats.min.js')
+    script(src=(cdnurl || '') + assets['stats.min.js'])
 
 block append content
     section#features.section

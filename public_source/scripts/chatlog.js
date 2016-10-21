@@ -16,6 +16,11 @@ $(()=> {
                 } else {
                     alert('The requested chatlog could not be found!');
                 }
+            },
+            statusCode: {
+                404: ()=> {
+                    if (window.confirm('The requested chatlog wasn\'t found.'))location = '/chatlogs';
+                }
             }
         })
     }
