@@ -31,7 +31,7 @@ gulp.task('scripts', () => gulp.src('public_source/scripts/*.js')
             stringify: (object)=> {
                 var k = Object.keys(object);
                 for (var i of k) {
-                    if (!object[i].endsWith('.css'))object[i] = `/public/scripts/${object[i]}`
+                    if (object[i].endsWith('.js'))object[i] = `/public/scripts/${object[i]}`
                 }
                 return JSON.stringify(object);
             }
@@ -51,7 +51,7 @@ gulp.task('scripts_dev', ()=> {
                 stringify: (object)=> {
                     var k = Object.keys(object);
                     for (var i of  k) {
-                        if (!object[i].endsWith('.css')) object[i] = `/public/scripts/${object[i]}`
+                        if (object[i].endsWith('.js')) object[i] = `/public/scripts/${object[i]}`
                     }
                     return JSON.stringify(object);
                 }
@@ -71,7 +71,7 @@ gulp.task('stylesheets', () => gulp.src('public_source/stylesheets/*.css')
             stringify: (object)=> {
                 var k = Object.keys(object);
                 for (var i of  k) {
-                    if (!object[i].endsWith('.js'))object[i] = `/public/stylesheets/${object[i]}`
+                    if (object[i].endsWith('.css'))object[i] = `/public/stylesheets/${object[i]}`
                 }
                 return JSON.stringify(object);
             }
@@ -81,10 +81,36 @@ gulp.task('stylesheets', () => gulp.src('public_source/stylesheets/*.css')
 
 gulp.task('copy', ['copy_fonts', 'copy_images']);
 
-gulp.task('copy_fonts', ()=> {
-    return gulp.src('public_source/fonts/*')
-        .pipe(gulp.dest('public/fonts'));
-});
+gulp.task('copy_fonts', ()=>gulp.src('public_source/fonts/*')
+    .pipe(rev())
+    .pipe(gulp.dest('public/fonts'))
+    .pipe(rev.manifest('public/rev-manifest.json', {
+        merge: true, transformer: {
+            parse: JSON.parse,
+            stringify: (object)=> {
+                var k = Object.keys(object);
+                for (var i of  k) {
+                    if (object[i].endsWith('.otf') || object[i].endsWith('.svg') || object[i].endsWith('.ttf') || object[i].endsWith('.woff') || object[i].endsWith('.woff2') || object[i].endsWith('.eot'))object[i] = `/public/fonts/${object[i]}`
+                }
+                return JSON.stringify(object);
+            }
+        }
+    }))
+    .pipe(gulp.dest('')));
 
 gulp.task('copy_images', ()=> gulp.src('public_source/images/*')
-    .pipe(gulp.dest('public/images')));
+    .pipe(rev())
+    .pipe(gulp.dest('public/images'))
+    .pipe(rev.manifest('public/rev-manifest.json', {
+        merge: true, transformer: {
+            parse: JSON.parse,
+            stringify: (object)=> {
+                var k = Object.keys(object);
+                for (var i of  k) {
+                    if (object[i].endsWith('.png'))object[i] = `/public/images/${object[i]}`
+                }
+                return JSON.stringify(object);
+            }
+        }
+    }))
+    .pipe(gulp.dest('')));
