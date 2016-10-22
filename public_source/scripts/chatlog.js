@@ -19,7 +19,12 @@ $(()=> {
             },
             statusCode: {
                 404: ()=> {
-                    if (window.confirm('The requested chatlog wasn\'t found.'))location = '/chatlogs';
+                    $('#guild_name').html('Not found...');
+                    $('#channel_name').html('Not found...');
+                    $('#user_name').html('Not found...');
+                    $('#time').html('Not found...');
+                    $('#chatlog_table').remove();
+                    setTimeout(()=>{if (window.confirm('The requested chatlog wasn\'t found.'))location = '/chatlogs';},1000)
                 }
             }
         })
