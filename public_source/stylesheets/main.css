@@ -256,7 +256,7 @@ a:focus {
 }
 
 .hero-area {
-    background: url(/public/images/background.png) no-repeat;
+    background: url(//gg.fuechschen.space/public/images/background-59aa3e7389.png) no-repeat;
     background-size: cover;
     background-position: center bottom;
     color: #fff;
@@ -484,12 +484,6 @@ a:focus {
 
 #services .show-box {
     padding: 22px 64px;
-}
-
-#why {
-    background: url(/public/images/why-bg.jpg);
-    background-size: cover;
-    color: #fff;
 }
 
 #why .content h2 {

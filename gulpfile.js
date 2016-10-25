@@ -11,7 +11,7 @@ gulp.task('default', ['scripts', 'stylesheets', 'copy']);
 
 gulp.task('dev', ['scripts_dev', 'stylesheets', 'copy']);
 
-gulp.task('clean', ()=>del['public/*']);
+gulp.task('clean', ()=>del(['public']));
 
 gulp.task('scripts', () => gulp.src('public_source/scripts/*.js')
     .pipe(babel({presets: ['es2015'], ignore: ['./public_source/scripts/wow.js']}))
@@ -19,7 +19,8 @@ gulp.task('scripts', () => gulp.src('public_source/scripts/*.js')
         compress: {
             sequences: false,
             conditionals: false
-        }
+        },
+        compact: false
     }))
     .pipe(obfuscate())
     .pipe(rename({suffix: '.min'}))
@@ -60,57 +61,31 @@ gulp.task('scripts_dev', ()=> {
         .pipe(gulp.dest(''));
 });
 
-gulp.task('stylesheets', () => gulp.src('public_source/stylesheets/*.css')
-    .pipe(cleanCSS({debug: true, processImportFrom: ['remote', '!fonts.googleapis.com']}))
-    .pipe(rename({suffix: '.min'}))
-    .pipe(rev())
-    .pipe(gulp.dest('public/stylesheets'))
-    .pipe(rev.manifest('public/rev-manifest.json', {
-        merge: true, transformer: {
-            parse: JSON.parse,
-            stringify: (object)=> {
-                var k = Object.keys(object);
-                for (var i of  k) {
-                    if (object[i].endsWith('.css'))object[i] = `/public/stylesheets/${object[i]}`
+gulp.task('stylesheets', () => {
+    return gulp.src('public_source/stylesheets/*.css')
+        .pipe(cleanCSS({debug: true, processImportFrom: ['remote', '!fonts.googleapis.com']}))
+        .pipe(rename({suffix: '.min'}))
+        .pipe(rev())
+        .pipe(gulp.dest('public/stylesheets'))
+        .pipe(rev.manifest('public/rev-manifest.json', {
+            merge: true, transformer: {
+                parse: JSON.parse,
+                stringify: (object)=> {
+                    var k = Object.keys(object);
+                    for (var i of  k) {
+                        if (object[i].endsWith('.css'))object[i] = `/public/stylesheets/${object[i]}`
+                    }
+                    return JSON.stringify(object);
                 }
-                return JSON.stringify(object);
             }
-        }
-    }))
-    .pipe(gulp.dest('')));
+        }))
+        .pipe(gulp.dest(''))
+});
 
 gulp.task('copy', ['copy_fonts', 'copy_images']);
 
 gulp.task('copy_fonts', ()=>gulp.src('public_source/fonts/*')
-    .pipe(rev())
-    .pipe(gulp.dest('public/fonts'))
-    .pipe(rev.manifest('public/rev-manifest.json', {
-        merge: true, transformer: {
-            parse: JSON.parse,
-            stringify: (object)=> {
-                var k = Object.keys(object);
-                for (var i of  k) {
-                    if (object[i].endsWith('.otf') || object[i].endsWith('.svg') || object[i].endsWith('.ttf') || object[i].endsWith('.woff') || object[i].endsWith('.woff2') || object[i].endsWith('.eot'))object[i] = `/public/fonts/${object[i]}`
-                }
-                return JSON.stringify(object);
-            }
-        }
-    }))
-    .pipe(gulp.dest('')));
+    .pipe(gulp.dest('public/fonts')));
 
 gulp.task('copy_images', ()=> gulp.src('public_source/images/*')
-    .pipe(rev())
-    .pipe(gulp.dest('public/images'))
-    .pipe(rev.manifest('public/rev-manifest.json', {
-        merge: true, transformer: {
-            parse: JSON.parse,
-            stringify: (object)=> {
-                var k = Object.keys(object);
-                for (var i of  k) {
-                    if (object[i].endsWith('.png'))object[i] = `/public/images/${object[i]}`
-                }
-                return JSON.stringify(object);
-            }
-        }
-    }))
-    .pipe(gulp.dest('')));
+    .pipe(gulp.dest('public/images')));
