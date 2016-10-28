@@ -30,7 +30,7 @@ app.use(logger('short', {
     }
 }));
 
-app.use('/public', express.static(path.join(__dirname, 'public')));
+app.use('/public', express.static(`${__dirname}/public`));
 
 app.use('/characters', require('./routes/characters'));
 app.use('/commands', require('./routes/commands'));
