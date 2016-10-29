@@ -1,8 +1,8 @@
 $(() => {
-    $.getJSON('//kitsune.fuechschen.org/api/v1/stats', d => {
-        $('#stats_users').html(d.data.u);
-        $('#stats_guilds').html(d.data.g);
-        $('#stats_channels').html(d.data.c);
-        $('#stats_mpm').html(d.data.m);
+    $.getJSON('//kitsune.fuechschen.org/api/v1.1/stats', d => {
+        $('#stats_users').html(d.data.users);
+        $('#stats_guilds').html(d.data.guilds);
+        $('#stats_channels').html(d.data.channels);
+        $('#stats_mpm').html(d.data.messages);
     });
 });
