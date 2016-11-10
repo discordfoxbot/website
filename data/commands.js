@@ -255,7 +255,7 @@ module.exports = {
         catgirl: {
             usage: (replacer)=>`${replacer.command}`,
             alias: ['neko'],
-            description: 'Displays a cute catgirl.\nThis command is powerd by <a href="http://catgirls.brussell98.tk/">http://catgirls.brussell98.tk</a>',
+            description: 'Displays a cute catgirl.\nThis command is partly powered by <a href="http://catgirls.brussell98.tk/" target="_blank">catgirls.brussell98.tk</a>',
             perm: 0,
             subcommands: {
                 add: {

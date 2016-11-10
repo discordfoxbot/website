@@ -10,7 +10,7 @@ block append content
                 .col-md-8.col-sm-8.wow.fadeInLeft(data-wow-duration='1000ms', data-wow-delay='300ms')
                     .feature-item
                         h3.title-small= command.usage
-                        p= command.description
+                        p!= command.description
     if subcommands && subcommands.length>0
         section#subcommands.section
             .container

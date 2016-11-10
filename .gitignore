@@ -85,10 +85,9 @@ fabric.properties
 
 config.js
 .idea
-html
-html/
 
 template.pug
 
 public
 
+yarn.lock
