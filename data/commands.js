@@ -251,6 +251,20 @@ module.exports = {
                     perm: 3
                 }
             }
+        },
+        catgirl: {
+            usage: (replacer)=>`${replacer.command}`,
+            alias: ['neko'],
+            description: 'Displays a cute catgirl.\nThis command is partly powered by <a href="http://catgirls.brussell98.tk/" target="_blank">catgirls.brussell98.tk</a>',
+            perm: 0,
+            subcommands: {
+                add: {
+                    usage: (replacer)=>`${replacer.command} [link]`,
+                    alias: null,
+                    perm: 0,
+                    description: 'Adds a catgirl picture to the database. Only direct links are supported.'
+                }
+            }
         }
     }
 };
