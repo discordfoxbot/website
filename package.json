@@ -2,12 +2,21 @@
   "name": "discordbot-website",
   "version": "0.0.0",
   "private": true,
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "production": "gulp",
+    "dev": "gulp dev"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
   "dependencies": {
     "bluebird": "^3.4.6",
     "cron": "^1.1.0",
-    "db": "github:kitsunebot/database",
     "express": "^4.14.0",
     "ioredis": "^2.4.0",
+    "kitsune-db": "0.0.22",
     "moment": "^2.15.1",
     "morgan": "^1.7.0",
     "mysql": "^2.11.1",

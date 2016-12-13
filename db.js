@@ -1,4 +1,4 @@
-var DB = require('db');
+var DB = require('kitsune-db');
 
 var config = require('./config');
 

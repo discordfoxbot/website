@@ -38,7 +38,7 @@ app.use('/chatlogs', require('./routes/chatlogs'));
 app.use('/dmca', require('./routes/dmca'));
 app.use('/_', require('./routes/_'));
 
-app.get('/', (req, res)=> {
+app.get('/', (req, res) => {
     res.render('index', {
         pagetitle: 'Kitsune',
         header: {
@@ -50,19 +50,19 @@ app.get('/', (req, res)=> {
     });
 });
 
-app.get('/invite', (req, res)=> {
+app.get('/invite', (req, res) => {
     res.redirect('https://discordapp.com/oauth2/authorize?access_type=online&client_id=168751105558183936&scope=bot&permissions=67464192')
 });
 
-app.get('/issues', (req, res)=> {
+app.get('/issues', (req, res) => {
     res.redirect('https://github.com/kitsunebot/bot/issues');
 });
 
-app.get('/repo', (req, res)=> {
+app.get('/repo', (req, res) => {
     res.redirect('https://github.com/kitsunebot/bot')
 });
 
-app.use((req, res, next)=> {
+app.use((req, res, next) => {
     next(404)
 });
 
@@ -82,4 +82,4 @@ app.use((err, req, res, next) => {
     story.error('http', 'Http reported an error.', {attach: err});
 });
 
-app.listen(4236);
+app.listen(process.env.PORT || 8080);
