@@ -6,7 +6,7 @@ var commands = require('../data/commands').commands;
 var list = (() => {
     var list = [];
     var keys = Object.keys(commands);
-    keys.forEach((key)=> {
+    keys.forEach((key) => {
         commands[key].name = key;
         commands[key].usage = commands[key].usage({command: commands[key].name});
         list.push({link: commands[key].name, name: commands[key].name});
@@ -14,7 +14,7 @@ var list = (() => {
             commands[key].sublist = (() => {
                 var sublist = [];
                 var keys = Object.keys(commands[key].subcommands);
-                keys.forEach((subkey)=> {
+                keys.forEach((subkey) => {
                     commands[key].subcommands[subkey].name = subkey;
                     commands[key].subcommands[subkey].usage = commands[key].subcommands[subkey].usage({command: `${key} ${subkey}`});
                     sublist.push({
@@ -33,7 +33,7 @@ var list = (() => {
     return list;
 })();
 
-app.get('/', (req, res)=> {
+app.get('/', (req, res) => {
     res.render('commands/index', {
         pagetitle: 'Kitsune Commands',
         header: {
@@ -46,7 +46,7 @@ app.get('/', (req, res)=> {
     });
 });
 
-app.get('/:command', (req, res, next)=> {
+app.get('/:command', (req, res, next) => {
     if (commands[req.params.command] !== undefined) {
         res.render('commands/command', {
             pagetitle: req.params.command,
@@ -60,7 +60,7 @@ app.get('/:command', (req, res, next)=> {
     } else next(404);
 });
 
-app.get('/:command/:subcommand', (req, res, next)=> {
+app.get('/:command/:subcommand', (req, res, next) => {
     if (commands[req.params.command]) {
         if (commands[req.params.command].subcommands[req.params.subcommand] !== undefined) {
             res.render('commands/command', {
