@@ -82,4 +82,4 @@ app.use((err, req, res, next) => {
     story.error('http', 'Http reported an error.', {attach: err});
 });
 
-app.listen(process.env.PORT || 8080);
+app.listen(process.env.PORT || config.http_port || 8080);
