@@ -1,7 +1,4 @@
 var app = require('express').Router();
-var Promise = require('bluebird');
-
-var db = require('../db');
 var config = require('../config');
 
 app.get('/', (req, res) => {

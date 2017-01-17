@@ -71,26 +71,6 @@ module.exports = {
                 }
             }
         },
-        watcher: {
-            usage: (replacer)=>`${replacer.command}`,
-            alias: [`twitchwatcher`],
-            description: `Displays current watchers for the channel used.`,
-            perm: 0,
-            subcommands: {
-                add: {
-                    usage: (replacer)=>`${replacer.command} [channel]`,
-                    alias: null,
-                    description: `Adds a watcher for the specified twitchchannel. Streammessages will be sent to the channel the command was used in.`,
-                    perm: 2
-                },
-                remove: {
-                    usage: (replacer)=>`${replacer.command} [channel]`,
-                    alias: null,
-                    description: `Removes the watcher for the specified twitchchannel.`,
-                    perm: 2
-                }
-            }
-        },
         waifu: {
             usage: (replacer)=>`${replacer.command}`,
             alias: null,
@@ -103,7 +83,7 @@ module.exports = {
                     description: `Returns the internal ID of your current waifu.`,
                     perm: 0
                 },
-                list: {
+               /* list: {
                     usage: (replacer)=>`${replacer.command}`,
                     alias: null,
                     description: `Returns a list for all available waifus.`,
@@ -126,10 +106,10 @@ module.exports = {
                     alias: null,
                     description: `Adds a picture to your waifu (or the waifu specified in the id). Pictures will be uploaded to gg.fuechschen.space and be queued for verification through one of Kitsune\'s managers.`,
                     perm: 0
-                }
+                }*/
             }
         },
-        husbando: {
+       /* husbando: {
             usage: (replacer)=>`${replacer.command}`,
             alias: null,
             description: `Displays a picture of your current husbando (or/and randomly assigns you one if you don\'t have one registerd.)`,
@@ -166,8 +146,8 @@ module.exports = {
                     perm: 0
                 }
             }
-        },
-        chatlog: {
+        },*/
+       /* chatlog: {
             usage: (replacer)=>`${replacer.command}`,
             alias: null,
             description: `Displays a short helptext for chatlogs.`,
@@ -179,14 +159,14 @@ module.exports = {
                     description: `Creates a chatlog of the last messages specified in count and returns a link for it.`
                 }
             }
-        },
+        },*/
         commands: {
             usage: (replacer)=>`${replacer.command}`,
             alias: null,
             description: `Dispalys to link to the command page`,
             perm: 0
         },
-        broadcast: {
+       /* broadcast: {
             usage: (replacer)=>`${replacer.command} [message]`,
             alias: null,
             description: `Prepares a Broadcast for being sent to the users.`,
@@ -211,60 +191,32 @@ module.exports = {
                     perm: 3,
                 }
             }
-        },
+        },*/
         github: {
             usage: (replacer)=>`${replacer.command}`,
             alias: null,
-            description: `Links to this page.`,
-            perm: 0,
-            subcommands: {
-                create: {
-                    usage: (replacer)=>`${replacer.command}`,
-                    alias: null,
-                    description: `Creates a new WebHook-Endpoint for GitHub to report into the current channel. You can use the returned link for as many webhooks as you want Supported events: "star","push"`,
-                    perm: 2
-                },
-                remove: {
-                    usage: (replacer)=>`${replacer.command}`,
-                    alias: null,
-                    description: `Removes the WebHook endpoint for this channel.`,
-                    perm: 3
-                }
-            }
+            description: `Shows the webhook-link for GitHub`,
+            perm: 0
         },
         gitlab: {
             usage: (replacer)=>`${replacer.command}`,
             alias: null,
-            description: `Links to this page.`,
-            perm: 0,
-            subcommands: {
-                create: {
-                    usage: (replacer)=>`${replacer.command}`,
-                    alias: null,
-                    description: `Creates a new WebHook-Endpoint for Gitlab to report into the current channel. You can use the returned link for as many webhooks as you want Supported events: "star","push"`,
-                    perm: 2
-                },
-                remove: {
-                    usage: (replacer)=>`${replacer.command}`,
-                    alias: null,
-                    description: `Removes the WebHook endpoint for this channel.`,
-                    perm: 3
-                }
-            }
+            description: `Shows the webhook-link for any Gitlab instance`,
+            perm: 0
         },
         catgirl: {
             usage: (replacer)=>`${replacer.command}`,
             alias: ['neko'],
             description: 'Displays a cute catgirl.\nThis command is partly powered by <a href="http://catgirls.brussell98.tk/" target="_blank">catgirls.brussell98.tk</a>',
             perm: 0,
-            subcommands: {
+            /*subcommands: {
                 add: {
                     usage: (replacer)=>`${replacer.command} [link]`,
                     alias: null,
                     perm: 0,
                     description: 'Adds a catgirl picture to the database. Only direct links are supported.'
                 }
-            }
+            }*/
         }
     }
 };
