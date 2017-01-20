@@ -3,5 +3,4 @@ let metrics = require('datadog-metrics'),
 
 metrics.init({apiKey: config.datadog, host: 'kitsune.fuechschen.org', prefix: 'kitsune.web.'});
 
-
 module.exports = metrics;
