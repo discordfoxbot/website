@@ -33,7 +33,7 @@ app.use(logger('short', {
 
 app.use((req, res, next) => {
     next();
-    metrics.increment('requests', 1, [`route:${req.path}`, `method:${req.method}`]);
+    metrics.increment('requests', 1, [`route:${req.originalUrl}`, `method:${req.method}`]);
 });
 
 app.use('/public', express.static(`${__dirname}/public`));
