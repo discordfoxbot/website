@@ -1,17 +1,18 @@
 process.env.NODE_ENV = 'production';
 
-var express = require('express');
-var path = require('path');
-var logger = require('morgan');
-var storyboard = require('storyboard');
-var S = require('string');
+let express = require('express'),
+    path = require('path'),
+    logger = require('morgan'),
+    storyboard = require('storyboard'),
+    S = require('string');
 
-var story = storyboard.mainStory;
+let story = storyboard.mainStory;
 storyboard.addListener(require('storyboard/lib/listeners/console').default);
 
-var config = require('./config');
+let config = require('./config'),
+    metrics = require('./metrics');
 
-var app = express();
+let app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -30,9 +31,13 @@ app.use(logger('short', {
     }
 }));
 
+app.use((req, res, next) => {
+    next();
+    metrics.increment('requests', 1, [`route:${req.path}`, `method:${req.method}`]);
+});
+
 app.use('/public', express.static(`${__dirname}/public`));
 
-app.use('/characters', require('./routes/characters'));
 app.use('/commands', require('./routes/commands'));
 app.use('/chatlogs', require('./routes/chatlogs'));
 app.use('/dmca', require('./routes/dmca'));
