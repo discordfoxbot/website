@@ -6,6 +6,7 @@ node_js:
   - "6"
 after_script:
   - "echo \"module.exports = {datadog: '$DATADOG',cdnUrl: '//gg.fuechschen.space',httpPort: 4236};\" > config.js"
+  - npm run production
   - docker build -t fuechschen/kitsune-website .
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - docker push fuechschen/kitsune-website
