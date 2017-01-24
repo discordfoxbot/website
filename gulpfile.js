@@ -1,4 +1,4 @@
-var gulp = require('gulp'),
+let gulp = require('gulp'),
     del = require('del'),
     cleanCSS = require('gulp-clean-css'),
     rename = require('gulp-rename'),
@@ -30,8 +30,8 @@ gulp.task('scripts', () => gulp.src('public_source/scripts/*.js')
         merge: true, transformer: {
             parse: JSON.parse,
             stringify: (object)=> {
-                var k = Object.keys(object);
-                for (var i of k) {
+                let k = Object.keys(object);
+                for (let i of k) {
                     if (object[i].endsWith('.js'))object[i] = `/public/scripts/${object[i]}`
                 }
                 return JSON.stringify(object);
@@ -50,8 +50,8 @@ gulp.task('scripts_dev', ()=> {
             merge: true, transformer: {
                 parse: JSON.parse,
                 stringify: (object)=> {
-                    var k = Object.keys(object);
-                    for (var i of  k) {
+                    let k = Object.keys(object);
+                    for (let i of  k) {
                         if (object[i].endsWith('.js')) object[i] = `/public/scripts/${object[i]}`
                     }
                     return JSON.stringify(object);
@@ -71,8 +71,8 @@ gulp.task('stylesheets', () => {
             merge: true, transformer: {
                 parse: JSON.parse,
                 stringify: (object)=> {
-                    var k = Object.keys(object);
-                    for (var i of  k) {
+                    let k = Object.keys(object);
+                    for (let i of  k) {
                         if (object[i].endsWith('.css'))object[i] = `/public/stylesheets/${object[i]}`
                     }
                     return JSON.stringify(object);

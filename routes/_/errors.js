@@ -1,7 +1,7 @@
-var app = require('express').Router();
+let app = require('express').Router();
 
-app.get('/:code', (req, res, next)=> {
-    var msg = '';
+app.get('/:code', (req, res)=> {
+    let msg = '';
     switch (req.params.code) {
         case '404':
             msg = 'Page not found';

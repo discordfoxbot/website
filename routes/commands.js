@@ -1,19 +1,19 @@
-var app = require('express').Router();
+let app = require('express').Router();
 
-var config = require('../config');
+let config = require('../config');
 
-var commands = require('../data/commands').commands;
-var list = (() => {
-    var list = [];
-    var keys = Object.keys(commands);
+let commands = require('../data/commands').commands;
+let list = (() => {
+    let list = [];
+    let keys = Object.keys(commands);
     keys.forEach((key) => {
         commands[key].name = key;
         commands[key].usage = commands[key].usage({command: commands[key].name});
         list.push({link: commands[key].name, name: commands[key].name});
         if (commands[key].subcommands !== undefined) {
             commands[key].sublist = (() => {
-                var sublist = [];
-                var keys = Object.keys(commands[key].subcommands);
+                let sublist = [];
+                let keys = Object.keys(commands[key].subcommands);
                 keys.forEach((subkey) => {
                     commands[key].subcommands[subkey].name = subkey;
                     commands[key].subcommands[subkey].usage = commands[key].subcommands[subkey].usage({command: `${key} ${subkey}`});
@@ -27,7 +27,7 @@ var list = (() => {
                     });
                 });
                 return sublist;
-            })()
+            })();
         }
     });
     return list;
@@ -42,7 +42,7 @@ app.get('/', (req, res) => {
             button: [{link: '/', text: 'Home'}]
         },
         commands: list,
-        cdnurl: config.cdn_url
+        cdnurl: config.cdnUrl
     });
 });
 
@@ -55,7 +55,7 @@ app.get('/:command', (req, res, next) => {
             },
             command: commands[req.params.command],
             subcommands: commands[req.params.command].sublist,
-            cdnurl: config.cdn_url
+            cdnurl: config.cdnUrl
         });
     } else next(404);
 });
@@ -71,7 +71,7 @@ app.get('/:command/:subcommand', (req, res, next) => {
                     button: [{link: '/commands', text: 'Commands'}, {link: '/', text: 'Home'}]
                 },
                 command: commands[req.params.command].subcommands[req.params.subcommand],
-                cdnurl: config.cdn_url
+                cdnurl: config.cdnUrl
             });
         } else next(404);
     } else next(404);

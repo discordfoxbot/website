@@ -1,4 +1,4 @@
-var app = require('express').Router();
+let app = require('express').Router();
 
 app.use('/errors', require('./errors'));
 

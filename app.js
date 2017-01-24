@@ -17,7 +17,7 @@ let app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-app.locals.cdnurl = config.cdn_url;
+app.locals.cdnurl = config.cdnUrl;
 app.locals.assets = require('./public/rev-manifest.json');
 
 
@@ -26,7 +26,7 @@ app.set('trust proxy', ['loopback']);
 app.use(logger('short', {
     stream: {
         write: (toLog) => {
-            story.info('http', S(toLog).chompRight('\n').s)
+            story.info('http', S(toLog).chompRight('\n').s);
         }
     }
 }));
@@ -51,12 +51,12 @@ app.get('/', (req, res) => {
             subtitle: 'A fully featured DiscordBot',
             button: [{link: '/commands', text: 'Commands'}, {link: '/chatlogs', text: 'Chatlogs'}]
         },
-        cdnurl: config.cdn_url
+        cdnurl: config.cdnUrl
     });
 });
 
 app.get('/invite', (req, res) => {
-    res.redirect('https://discordapp.com/oauth2/authorize?access_type=online&client_id=168751105558183936&scope=bot&permissions=67464192')
+    res.redirect('https://discordapp.com/oauth2/authorize?access_type=online&client_id=168751105558183936&scope=bot&permissions=67464192');
 });
 
 app.get('/issues', (req, res) => {
@@ -64,16 +64,16 @@ app.get('/issues', (req, res) => {
 });
 
 app.get('/repo', (req, res) => {
-    res.redirect('https://github.com/kitsunebot/bot')
+    res.redirect('https://github.com/kitsunebot/bot');
 });
 
 app.use((req, res, next) => {
-    next(404)
+    next(404);
 });
 
-app.use((err, req, res, next) => {
+app.use((err, req, res, next) => {//eslint-disable-line no-unused-vars
     if (typeof err === 'number') {
-        var msg = '';
+        let msg = '';
         switch (err) {
             case 404:
                 msg = 'Page not found';
@@ -87,4 +87,4 @@ app.use((err, req, res, next) => {
     story.error('http', 'Http reported an error.', {attach: err});
 });
 
-app.listen(process.env.PORT || config.http_port || 8080);
+app.listen(process.env.PORT || config.httpPort || 8080);

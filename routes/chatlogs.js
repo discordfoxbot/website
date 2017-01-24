@@ -1,11 +1,11 @@
-var app = require('express').Router();
-var config = require('../config');
+let app = require('express').Router(),
+    config = require('../config');
 
 app.get('/', (req, res) => {
     res.render('chatlog/index', {
         pagetitle: 'ChatLogs',
         header: {button: [{link: '/', text: 'Home'}]},
-        cdnurl: config.cdn_url
+        cdnurl: config.cdnUrl
     });
 });
 
@@ -14,7 +14,7 @@ app.get('/:id', (req, res, next) => {
     else res.render('chatlog/log', {
         logid: req.params.id,
         header: {button: [{link: '/', text: 'Home'}]},
-        cdnurl: config.cdn_url
+        cdnurl: config.cdnUrl
     });
 });
 

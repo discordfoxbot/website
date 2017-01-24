@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node app.js",
     "production": "gulp",
-    "dev": "gulp dev"
+    "dev": "gulp dev",
+    "test": "eslint \"**/*.js\""
   },
   "engines": {
     "node": ">=6.0.0"
@@ -36,5 +37,49 @@
     "gulp-rename": "^1.2.2",
     "gulp-rev": "^7.1.2",
     "gulp-uglify": "^2.0.0"
+  },
+  "eslintConfig": {
+    "env": {
+      "es6": true,
+      "node": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 6
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+      "semi": [
+        2,
+        "always",
+        {
+          "omitLastInOneLineBlock": true
+        }
+      ],
+      "no-unused-vars": [
+        2,
+        {
+          "argsIgnorePattern": "^_",
+          "caughtErrors": "none"
+        }
+      ],
+      "no-control-regex": 0,
+      "global-require": 1,
+      "camelcase": 1,
+      "dot-notation": 1,
+      "no-else-return": 2,
+      "no-plusplus": 2,
+      "constructor-super": 2,
+      "prefer-arrow-callback": 1,
+      "object-shorthand": 2,
+      "object-curly-spacing": 1,
+      "object-property-newline": [
+        1,
+        {
+          "allowMultiplePropertiesPerLine": true
+        }
+      ],
+      "no-var": 2,
+      "no-inner-declarations": 0
+    }
   }
 }

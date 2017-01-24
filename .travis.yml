@@ -4,9 +4,8 @@ services:
 language: node_js
 node_js:
   - "6"
-  - "node"
 after_script:
-  - "echo \"module.exports = {datadog: '$DATADOG',cdn_url: '//gg.fuechschen.space',http_port: 4236};\" > config.js"
+  - "echo \"module.exports = {datadog: '$DATADOG',cdnUrl: '//gg.fuechschen.space',httpPort: 4236};\" > config.js"
   - docker build -t kitsune/website .
   - docker login registry.fuechschen.org
   - docker push kitsune/website
