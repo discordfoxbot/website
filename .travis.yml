@@ -7,6 +7,6 @@ node_js:
 after_success:
   - "echo \"module.exports = {datadog: process.env.DATADOG,cdnUrl: '//gg.fuechschen.space',httpPort: 3000};\" > config.js"
   - npm run production
-  - docker build -t fuechschen/kitsune-website .
-  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - docker push fuechschen/kitsune-website && exit 0
+  - docker build -t registry.fuechschen.org/fuechschen/kitsune-website .
+  - docker login registry.fuechschen.org -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker push registry.fuechschen.org/fuechschen/kitsune-website && exit 0
