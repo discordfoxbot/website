@@ -88,6 +88,6 @@ config.js
 
 template.pug
 
-public
+##public
 
 yarn.lock
