@@ -9,8 +9,14 @@ let express = require('express'),
 let story = storyboard.mainStory;
 storyboard.addListener(require('storyboard/lib/listeners/console').default);
 
-let config = require('./config'),
+let config,
     metrics = require('./metrics');
+
+try {
+    config = require('./config');
+} catch (e) {
+    config = {datadog: process.env.DATADOG_KEY, cdnUrl: process.env.CDNURL, httpPort: process.env.PORT}
+}
 
 let app = express();
 

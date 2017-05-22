@@ -1,6 +1,11 @@
 let app = require('express').Router();
 
-let config = require('../config');
+let config;
+try {
+    config = require('../config');
+} catch (e) {
+    config = {datadog: process.env.DATADOG_KEY, cdnUrl: process.env.CDNURL, httpPort: process.env.PORT}
+}
 
 let commands = require('../data/commands').commands;
 let list = (() => {
